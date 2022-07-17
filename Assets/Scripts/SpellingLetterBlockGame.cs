@@ -17,22 +17,41 @@ public class SpellingLetterBlockGame : MonoBehaviour
 
     System.Random random;
 
+    DragController dragController;
+    Coroutine startGame;
+
     #region Start, Update, etc.
 
     // Use this for initialization
     void Start()
     {
         random = new System.Random();
+        dragController = FindObjectOfType<DragController>();
 
         words = new List<string>
         {
-            "Count"
+            "Count", "Start", "Light"
         };
 
         SelectNextWord();
     }
 
+    private void Update()
+    {
+        if(dragController?.AllTargetsReached() == true && startGame == null)
+        {
+            startGame = StartCoroutine(WaitAndSelectNextWord());
+        }
+    }
     #endregion
+
+    IEnumerator WaitAndSelectNextWord()
+    {
+        AudioManager.instance.PlaySoundEffect(EnumSoundName.Victory);
+        yield return new WaitForSeconds(3f);
+        SelectNextWord();
+        startGame = null;
+    }
 
     public void SelectNextWord()
     {

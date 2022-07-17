@@ -58,7 +58,6 @@ public class AudioManager : MonoBehaviour
         Sound soundEffect = soundEffects.FirstOrDefault(s => s.soundName == soundName);
         if (soundEffect != null)
         {
-            Debug.Log("Playing: " + soundName.ToString());
             soundEffect.source.Play();
         }
         else

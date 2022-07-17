@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 34058006}
   - component: {fileID: 34058005}
   m_Layer: 7
-  m_Name: Left Ear
+  m_Name: _Left Ear
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 62051122}
   - component: {fileID: 62051125}
   - component: {fileID: 62051126}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Shoes
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 314487486}
   - component: {fileID: 314487485}
   m_Layer: 7
-  m_Name: Mouth
+  m_Name: _Mouth
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -766,7 +766,7 @@ GameObject:
   - component: {fileID: 709830463}
   - component: {fileID: 709830462}
   - component: {fileID: 709830465}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Right Arm
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -915,7 +915,7 @@ GameObject:
   - component: {fileID: 782545478}
   - component: {fileID: 782545481}
   - component: {fileID: 782545482}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -1104,7 +1104,7 @@ GameObject:
   - component: {fileID: 871675267}
   - component: {fileID: 871675266}
   m_Layer: 7
-  m_Name: Right Ear
+  m_Name: _Right Ear
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1554,7 +1554,7 @@ GameObject:
   - component: {fileID: 1163079772}
   - component: {fileID: 1163079771}
   m_Layer: 7
-  m_Name: Eyes
+  m_Name: _Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1678,7 +1678,7 @@ GameObject:
   - component: {fileID: 1367558253}
   - component: {fileID: 1367558252}
   m_Layer: 7
-  m_Name: Right Arm
+  m_Name: _Right Arm
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1951,7 +1951,7 @@ GameObject:
   - component: {fileID: 1417655667}
   - component: {fileID: 1417655666}
   m_Layer: 7
-  m_Name: Shoes
+  m_Name: _Shoes
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2291,6 +2291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1568603282}
   - component: {fileID: 1568603283}
+  - component: {fileID: 1568603284}
   m_Layer: 0
   m_Name: Drag Controller
   m_TagString: Untagged
@@ -2325,6 +2326,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e8bc6bc912a00468bfcd366b494372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1568603284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568603280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6556bb247a424b4daf9c751f6dfa397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1569403999
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,7 +2351,7 @@ GameObject:
   - component: {fileID: 1569404002}
   - component: {fileID: 1569404001}
   m_Layer: 7
-  m_Name: Left Arm
+  m_Name: _Left Arm
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2462,7 +2475,7 @@ GameObject:
   - component: {fileID: 1640293241}
   - component: {fileID: 1640293240}
   - component: {fileID: 1640293243}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Left Arm
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -2609,9 +2622,9 @@ GameObject:
   - component: {fileID: 1701382729}
   - component: {fileID: 1701382732}
   - component: {fileID: 1701382731}
-  - component: {fileID: 1701382730}
+  - component: {fileID: 1701382733}
   m_Layer: 7
-  m_Name: Hat
+  m_Name: _Hat
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2632,32 +2645,6 @@ Transform:
   m_Father: {fileID: 1969456047}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1701382730
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1701382728}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.985714, y: 2.4642856}
-    newSize: {x: 3.74, y: 2.2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.74, y: 2.2}
-  m_EdgeRadius: 0
 --- !u!212 &1701382731
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2722,6 +2709,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b4869f489d18b144aa11f8073956d92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1701382733
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701382728}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.985714, y: 2.4642856}
+    newSize: {x: 3.74, y: 2.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.985714, y: 2.4642856}
+  m_EdgeRadius: 0
 --- !u!1 &1922431882
 GameObject:
   m_ObjectHideFlags: 0
@@ -3328,7 +3341,7 @@ GameObject:
   - component: {fileID: 2127173852}
   - component: {fileID: 2127173851}
   m_Layer: 7
-  m_Name: Nose
+  m_Name: _Nose
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

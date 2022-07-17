@@ -14,7 +14,6 @@ public class DragController : MonoBehaviour
     private Draggable lastDragged;
 
     private List<Draggable> draggables;
-    bool allTargetsReached = false;
     private void Awake()
     {
         // only want one instance of controller
@@ -27,17 +26,6 @@ public class DragController : MonoBehaviour
 
     void Update()
     {
-        // check if all targets reached
-        if (allTargetsReached) return;
-
-        draggables = FindObjectsOfType<Draggable>().ToList();
-        List<Draggable> draggableTargetsReached = draggables.Where(x => x.TargetReached == false).ToList();
-        if(draggableTargetsReached.Count == 0)
-        {
-            allTargetsReached = true;
-            AudioManager.instance.PlaySoundEffect(EnumSoundName.Victory);
-        }
-
         if (Touchscreen.current?.primaryTouch?.press?.isPressed != null)
         {
             if (!Touchscreen.current.primaryTouch.press.isPressed)
@@ -74,10 +62,24 @@ public class DragController : MonoBehaviour
         }
     }
 
+    public bool AllTargetsReached()
+    {
+        bool allTargetsReached = false;
+
+        List<Draggable> draggables = FindObjectsOfType<Draggable>().ToList();
+        List<Draggable> draggableTargetsReached = draggables.Where(x => x.TargetReached == false).ToList();
+        if (draggableTargetsReached.Count == 0)
+        {
+            allTargetsReached = true;
+        }
+
+        return allTargetsReached;
+    }
+
     void InitDrag()
     {
         // audio played when target not reached
-        if (lastDragged.movementDestination == null)
+        if (lastDragged?.movementDestination == null)
             AudioManager.instance.PlaySoundEffect(EnumSoundName.DraggablePickUp);
         UpdateDragStatus(true);
     }
@@ -92,9 +94,13 @@ public class DragController : MonoBehaviour
     void Drop()
     {
         // audio played when target reached
-        if(lastDragged.movementDestination != null && lastDragged.TargetReached == false)
+        if(lastDragged?.movementDestination != null && lastDragged?.TargetReached == false)
             AudioManager.instance.PlaySoundEffect(EnumSoundName.DraggableDrop);
         UpdateDragStatus(false);
+
+        // check if all targets reached & play sound
+        if (AllTargetsReached())
+            AudioManager.instance.PlaySoundEffect(EnumSoundName.Victory);
     }
 
     void UpdateDragStatus(bool isDragging)
@@ -106,10 +112,17 @@ public class DragController : MonoBehaviour
 
     IEnumerator SetSortOrder(bool isDragging, Draggable dragged)
     {
-        if (!isDragging)
-            yield return new WaitUntil(() => dragged.IsMoving == false);
-                
-        dragged.SpriteRenderer.sortingOrder = isDragging ? Layer.Dragging : Layer.Default;
-        dragged.GetComponentInChildren<MeshRenderer>().sortingOrder = isDragging ? Layer.Dragging : Layer.Default;
+        if (dragged != null)
+        {
+            if (!isDragging)
+                yield return new WaitUntil(() => dragged.IsMoving == false);
+
+            dragged.SpriteRenderer.sortingOrder = isDragging ? Layer.Dragging : Layer.Default;
+            MeshRenderer meshRenderer = dragged.GetComponentInChildren<MeshRenderer>();
+            if (meshRenderer != null)
+            {
+                dragged.GetComponentInChildren<MeshRenderer>().sortingOrder = isDragging ? Layer.Dragging : Layer.Default;
+            }
+        }
     }
 }
