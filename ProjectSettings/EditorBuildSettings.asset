@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PotatoeHead.unity
     guid: 48341d67f63ee384e8a6c599bb3f3cf8
+  - enabled: 1
+    path: Assets/Scenes/EtchSketch.unity
+    guid: c270183bcda294540850ec23858fb450
   m_configObjects: {}

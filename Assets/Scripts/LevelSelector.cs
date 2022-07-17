@@ -14,4 +14,9 @@ public class LevelSelector : MonoBehaviour
     {
         SceneManager.LoadScene("PotatoeHead");
     }
+
+    public void LoadEtchSketchScene()
+    {
+        SceneManager.LoadScene("EtchSketch");
+    }
 }
