@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EtchSketch.unity
     guid: c270183bcda294540850ec23858fb450
+  - enabled: 1
+    path: Assets/Scenes/SpellingLetterBlocks.unity
+    guid: 0a364026ec734e04cbd041990166819d
   m_configObjects: {}

@@ -1,10 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Assets.Scripts
+public class DragTarget : MonoBehaviour
 {
-    public class DragTarget : MonoBehaviour
-    {
 
-    }
 }

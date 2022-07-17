@@ -15,12 +15,6 @@ namespace Assets.Scripts
 
         bool isDrawing = false;
 
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
         // Update is called once per frame
         void Update()
         {
@@ -43,8 +37,10 @@ namespace Assets.Scripts
                 if (isDrawing)
                 {
                     // update line if certain distance away
-                    if(Vector2.Distance(worldPosition, fingerPositions[fingerPositions.Count - 1]) > .1f)
+                    if (Vector2.Distance(worldPosition, fingerPositions[fingerPositions.Count - 1]) > .1f)
+                    {
                         UpdateLine(worldPosition);
+                    }
                 }
                 else
                 {
@@ -56,6 +52,9 @@ namespace Assets.Scripts
         void CreateLine(Vector2 worldPosition)
         {
             isDrawing = true;
+
+            // sound effect
+            AudioManager.instance.PlaySoundEffect(EnumSoundName.Drawing);
 
             // instantiate new line
             currentLine = Instantiate(linePrefab, Vector3.zero, Quaternion.identity);
@@ -82,6 +81,7 @@ namespace Assets.Scripts
         void FinishLine()
         {
             isDrawing = false;
+            AudioManager.instance.StopSoundEffect(EnumSoundName.Drawing);
         }
     }
 }

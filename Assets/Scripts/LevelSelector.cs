@@ -19,4 +19,9 @@ public class LevelSelector : MonoBehaviour
     {
         SceneManager.LoadScene("EtchSketch");
     }
+
+    public void LoadSpellingLetterBlocksScene()
+    {
+        SceneManager.LoadScene("SpellingLetterBlocks");
+    }
 }
