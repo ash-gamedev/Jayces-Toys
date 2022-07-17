@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9eda5c2f6e81e014c8491852256d6d4e
+guid: 0271dac7769190141b0f3ee86b336f44
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 140
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,6 +101,18 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -116,127 +128,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PotatoeHeadInk_0
+      name: PotatoeHeadInk 1_0
       rect:
         serializedVersion: 2
-        x: 46
-        y: 113
-        width: 705
-        height: 903
+        x: 170
+        y: 1812
+        width: 717
+        height: 238
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2023fd3ffd23c142b35017f193d1665
-      internalID: 1646585003
+      spriteID: 094fc7ef665d5014fa1ea492f23b89c8
+      internalID: -1852286606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PotatoeHeadInk_1
+      name: PotatoeHeadInk 1_1
       rect:
         serializedVersion: 2
-        x: 770
-        y: 859
-        width: 126
+        x: 1227
+        y: 1662
+        width: 698
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8fd0201290063e4593ae787e8ccbf09
+      internalID: 81442633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PotatoeHeadInk 1_2
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 556
+        width: 970
+        height: 1243
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3b77c58cb81ddc48bfb4a935cfa6c7b
+      internalID: 1364525421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PotatoeHeadInk 1_3
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 1291
+        width: 480
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e62a2350e7846074aaeddceb3705868e
+      internalID: 621191305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PotatoeHeadInk 1_7
+      rect:
+        serializedVersion: 2
+        x: 1879
+        y: 1274
+        width: 175
+        height: 263
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c9eeab632b45d4091ed29c6aa913b1
+      internalID: -1433082823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PotatoeHeadInk 1_8
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 1255
+        width: 174
+        height: 263
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d45ec19f8fd608478477425d4301ed2
+      internalID: -1501566562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PotatoeHeadInk 1_9
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 1036
+        width: 412
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5008a028fd81d4445825c7a718870efd
+      internalID: -1873640666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PotatoeHeadInk 1_10
+      rect:
+        serializedVersion: 2
+        x: 1288
+        y: 818
+        width: 582
         height: 191
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 528824cc36ce2a34bb4dd6c46facb407
-      internalID: 1345002331
+      spriteID: bb473f884bd413e43a9b830d28dab297
+      internalID: 1918231422
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PotatoeHeadInk_2
+      name: PotatoeHeadInk 1_11
       rect:
         serializedVersion: 2
-        x: 1272
-        y: 868
-        width: 126
-        height: 191
+        x: 1190
+        y: 538
+        width: 760
+        height: 225
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3eb8c9dc6b158d429b004a9bc768d56
-      internalID: -1371685556
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PotatoeHeadInk_3
-      rect:
-        serializedVersion: 2
-        x: 944
-        y: 654
-        width: 299
-        height: 182
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fde1ac4517a661c4eb19b476ed781195
-      internalID: -236723606
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PotatoeHeadInk_4
-      rect:
-        serializedVersion: 2
-        x: 878
-        y: 418
-        width: 422
-        height: 139
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b19973779f2c9c14382b2db38cdd840c
-      internalID: -1447837503
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PotatoeHeadInk_6
-      rect:
-        serializedVersion: 2
-        x: 907
-        y: 143
-        width: 374
-        height: 220
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 481e463a97c8cdd4b82cd132cbc3d1be
-      internalID: 2097508166
+      spriteID: 8274c863c3f6409408cc8949fb231bf3
+      internalID: 1688609643
       vertices: []
       indices: 
       edges: []
@@ -252,15 +327,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PotatoeHeadInk_5: -505960049
-      PotatoeHeadInk_6: 2097508166
-      PotatoeHeadInk_4: -1447837503
-      PotatoeHeadInk_7: 1782986780
-      PotatoeHeadInk_1: 1345002331
-      PotatoeHeadInk_2: -1371685556
-      PotatoeHeadInk_8: -2049757626
-      PotatoeHeadInk_0: 1646585003
-      PotatoeHeadInk_3: -236723606
+      PotatoeHeadInk 1_10: 1918231422
+      PotatoeHeadInk 1_1: 81442633
+      PotatoeHeadInk 1_5: 2112450003
+      PotatoeHeadInk 1_11: 1688609643
+      PotatoeHeadInk 1_4: -387039236
+      PotatoeHeadInk 1_0: -1852286606
+      PotatoeHeadInk 1_6: -624344610
+      PotatoeHeadInk 1_9: -1873640666
+      PotatoeHeadInk 1_3: 621191305
+      PotatoeHeadInk 1_8: -1501566562
+      PotatoeHeadInk 1_12: -1176039661
+      PotatoeHeadInk 1_7: -1433082823
+      PotatoeHeadInk 1_2: 1364525421
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
