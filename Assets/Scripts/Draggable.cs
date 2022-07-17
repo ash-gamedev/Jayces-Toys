@@ -27,8 +27,6 @@ namespace Assets.Scripts
         // private variables
         private SpriteRenderer spriteRenderer;
 
-        private DragController dragController;
-
         // serilzd fields
         [SerializeField] private DragTarget dragTarget;
         
@@ -39,7 +37,6 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            dragController = FindObjectOfType<DragController>();
             spriteRenderer = GetComponent<SpriteRenderer>();
 
             StartPosition = transform.position;

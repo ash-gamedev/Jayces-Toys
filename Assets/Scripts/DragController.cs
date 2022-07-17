@@ -24,34 +24,37 @@ namespace Assets.Scripts
 
         void Update()
         {
-            if (!Touchscreen.current.primaryTouch.press.isPressed)
+            if(Touchscreen.current?.primaryTouch?.press?.isPressed != null)
             {
-                if(isDragActive)
-                    Drop();
-                return;
-            }
-
-            // get touch position
-            Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
-
-            // convert to world space
-            worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
-
-            // check if drag is already active
-            if (isDragActive)
-            {
-                Drag();
-            }
-            else
-            {
-                RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero);
-                if(hit.collider != null)
+                if (!Touchscreen.current.primaryTouch.press.isPressed)
                 {
-                    Draggable draggable = hit.transform.gameObject.GetComponent<Draggable>();
-                    if(draggable != null)
+                    if (isDragActive)
+                        Drop();
+                    return;
+                }
+
+                // get touch position
+                Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+
+                // convert to world space
+                worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
+
+                // check if drag is already active
+                if (isDragActive)
+                {
+                    Drag();
+                }
+                else
+                {
+                    RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero);
+                    if (hit.collider != null)
                     {
-                        lastDragged = draggable;
-                        InitDrag();
+                        Draggable draggable = hit.transform.gameObject.GetComponent<Draggable>();
+                        if (draggable != null)
+                        {
+                            lastDragged = draggable;
+                            InitDrag();
+                        }
                     }
                 }
             }
