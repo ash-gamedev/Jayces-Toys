@@ -541,6 +541,12 @@ MonoBehaviour:
   - {fileID: 2285339476844882160, guid: e6d8ed2bc12cf664cb1582d4d85338de, type: 3}
   - {fileID: 1082073620705658680, guid: a9d988df1c6eefc469b5e8eea84dabe2, type: 3}
   - {fileID: 1423991637421040309, guid: abd1c47f8ad0abf4fae8f62ea7fe40fc, type: 3}
+  placeholderLetterBlockPrefabs:
+  - {fileID: 2737840007387206021, guid: f770156af2dc13646930d09fc283e0ef, type: 3}
+  - {fileID: 2574041781597248126, guid: deb47933e2f579f43b5b2a0e6d628c2a, type: 3}
+  - {fileID: 3379781351286251005, guid: 435307b4d2056dc4585fbcf5109e97b8, type: 3}
+  - {fileID: 8144615201163146391, guid: 880a22ab1080a4b4da963c85fa968ece, type: 3}
+  - {fileID: 2737840007387206021, guid: f770156af2dc13646930d09fc283e0ef, type: 3}
   words: []
   currentWord: 
 --- !u!1 &1705696554

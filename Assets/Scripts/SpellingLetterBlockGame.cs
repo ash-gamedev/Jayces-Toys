@@ -9,6 +9,7 @@ public class SpellingLetterBlockGame : MonoBehaviour
     [SerializeField] Transform placeholderLetterBlocksGroup;
     [SerializeField] Transform letterBlocksGroup;
     [SerializeField] List<GameObject> letterBlockPrefabs;
+    [SerializeField] List<GameObject> placeholderLetterBlockPrefabs;
 
     // public fields
     public List<string> words;
@@ -55,28 +56,33 @@ public class SpellingLetterBlockGame : MonoBehaviour
             GameObject.Destroy(child.gameObject);
 
         // get x positions
-        List<int> xPositions = Shuffle(GetXPositionIndexes());
+        List<int> xPositions = GetXPositionIndexes();
+        List<int> xPositionsShuffled = Shuffle(xPositions);
 
         // create letter block for each letter
         for (int i = 0; i < currentWord.Length; i++)
         {
-            // get random position to instantiate letter
-            int xPosition = xPositions[i];
-
-            // select random colour block
-            GameObject letterBlockPrefab = letterBlockPrefabs[i];
-
             // instantiate letter block
+            int xPositionShuffled = xPositionsShuffled[i];
+            GameObject letterBlockPrefab = letterBlockPrefabs[i];
             GameObject letterBlockInstance = Instantiate(letterBlockPrefab, letterBlocksGroup);
-            letterBlockInstance.transform.position += new Vector3(xPosition, 0, 0);
+            letterBlockInstance.transform.position += new Vector3(xPositionShuffled, 0, 0);
 
             // set letter
             string letter = currentWord[i].ToString();
             letterBlockInstance.GetComponent<LetterBlock>().SetLetter(letter);
 
             // instantiate letter block placeholder
+            int xPosition = xPositions[i];
+            GameObject placeholderLetterBlockPrefab = placeholderLetterBlockPrefabs[i];
+            GameObject placeholderLetterBlockInstance = Instantiate(placeholderLetterBlockPrefab, placeholderLetterBlocksGroup);
+            placeholderLetterBlockInstance.transform.position += new Vector3(xPosition, 0, 0);
 
-            // set letter and transparency
+            // set letter
+            placeholderLetterBlockInstance.GetComponent<LetterBlock>().SetLetter(letter);
+
+            // set drag target
+            letterBlockInstance.GetComponent<Draggable>().DragTarget = placeholderLetterBlockInstance.GetComponent<DragTarget>();
         }
     }
 
@@ -107,17 +113,18 @@ public class SpellingLetterBlockGame : MonoBehaviour
 
     private List<int> Shuffle(List<int> list)
     {
-        int n = list.Count;
+        List<int> listCopy = new List<int>(list);
+        int n = listCopy.Count;
         while (n > 1)
         {
             n--;
             int k = random.Next(n + 1);
-            int value = list[k];
-            list[k] = list[n];
-            list[n] = value;
+            int value = listCopy[k];
+            listCopy[k] = listCopy[n];
+            listCopy[n] = value;
         }
 
-        return list;
+        return listCopy;
     }
 
     #endregion

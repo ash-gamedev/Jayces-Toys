@@ -99,9 +99,9 @@ public class DragController : MonoBehaviour
 
     void UpdateDragStatus(bool isDragging)
     {
-        StartCoroutine(SetSortOrder(isDragging, lastDragged));
-
         isDragActive = lastDragged.isDragging = isDragging;
+
+        StartCoroutine(SetSortOrder(isDragging, lastDragged));
     }
 
     IEnumerator SetSortOrder(bool isDragging, Draggable dragged)

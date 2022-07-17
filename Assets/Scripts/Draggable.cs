@@ -24,7 +24,17 @@ public class Draggable : MonoBehaviour
             spriteRenderer = value;
         }
     }
-    public DragTarget DragTarget => dragTarget;
+    public DragTarget DragTarget
+    {
+        get
+        {
+            return dragTarget;
+        }
+        set
+        {
+            dragTarget = value;
+        }
+    }
     public bool TargetReached => targetReached;
 
     // private variables
@@ -54,7 +64,7 @@ public class Draggable : MonoBehaviour
                 // reset movement destination is still dragging
                 if (isDragging)
                 {
-                    //movementDestination = null;
+                    movementDestination = null;
                     return;
                 }
 
@@ -83,7 +93,7 @@ public class Draggable : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.transform.position == dragTarget?.transform.position)
+        if (collision.gameObject.transform.position == dragTarget?.transform.position && isDragging)
         {
             movementDestination = dragTarget.transform.position;
         }
