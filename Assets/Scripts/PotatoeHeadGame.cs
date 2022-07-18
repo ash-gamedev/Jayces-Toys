@@ -24,6 +24,5 @@ public class PotatoeHeadGame : MonoBehaviour
     {
         AudioManager.instance.PlaySoundEffect(EnumSoundName.Victory);
         yield return new WaitForSeconds(3f);
-        startGame = null;
     }
 }

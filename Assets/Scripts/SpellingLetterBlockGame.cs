@@ -48,7 +48,7 @@ public class SpellingLetterBlockGame : MonoBehaviour
     IEnumerator WaitAndSelectNextWord()
     {
         AudioManager.instance.PlaySoundEffect(EnumSoundName.Victory);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         SelectNextWord();
         startGame = null;
     }

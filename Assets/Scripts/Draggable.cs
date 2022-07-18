@@ -35,7 +35,7 @@ public class Draggable : MonoBehaviour
             dragTarget = value;
         }
     }
-    public bool TargetReached => targetReached;
+    public bool TargetReached => transform.position == dragTarget?.transform.position;
 
     // private variables
     private SpriteRenderer spriteRenderer;
@@ -46,7 +46,6 @@ public class Draggable : MonoBehaviour
     // movement
     private float movementTime = 15f;
     public System.Nullable<Vector3> movementDestination;
-    bool targetReached = false;
 
     private void Start()
     {
@@ -57,7 +56,7 @@ public class Draggable : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (targetReached == false)
+        if (TargetReached == false)
         {
             if (movementDestination.HasValue)
             {
@@ -72,7 +71,6 @@ public class Draggable : MonoBehaviour
                 {
                     spriteRenderer.sortingOrder = Layer.Default;
                     movementDestination = null;
-                    targetReached = true;
                 }
                 else
                 {
