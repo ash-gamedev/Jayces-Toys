@@ -389,6 +389,50 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
+--- !u!1 &1227873208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1227873210}
+  - component: {fileID: 1227873209}
+  m_Layer: 0
+  m_Name: Game Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1227873209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227873208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a2bac8ac86254d4da50d9b35be0f651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1227873210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227873208}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1527413496
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,22 +571,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1568603280}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd0a39a96cbcbd4fa8ccba10d77b251, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d6b4d4750ccddc4ab5cf714a7011abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   placeholderLetterBlocksGroup: {fileID: 1705696555}
   letterBlocksGroup: {fileID: 1819866217}
   letterBlockPrefabs:
   - {fileID: 1423991637421040309, guid: abd1c47f8ad0abf4fae8f62ea7fe40fc, type: 3}
-  - {fileID: 6783037006197675373, guid: 66440214cf5bf204cb565f57ce3d904c, type: 3}
   - {fileID: 2285339476844882160, guid: e6d8ed2bc12cf664cb1582d4d85338de, type: 3}
   - {fileID: 1082073620705658680, guid: a9d988df1c6eefc469b5e8eea84dabe2, type: 3}
+  - {fileID: 6783037006197675373, guid: 66440214cf5bf204cb565f57ce3d904c, type: 3}
   - {fileID: 1423991637421040309, guid: abd1c47f8ad0abf4fae8f62ea7fe40fc, type: 3}
   placeholderLetterBlockPrefabs:
   - {fileID: 2737840007387206021, guid: f770156af2dc13646930d09fc283e0ef, type: 3}
-  - {fileID: 2574041781597248126, guid: deb47933e2f579f43b5b2a0e6d628c2a, type: 3}
   - {fileID: 3379781351286251005, guid: 435307b4d2056dc4585fbcf5109e97b8, type: 3}
   - {fileID: 8144615201163146391, guid: 880a22ab1080a4b4da963c85fa968ece, type: 3}
+  - {fileID: 2574041781597248126, guid: deb47933e2f579f43b5b2a0e6d628c2a, type: 3}
   - {fileID: 2737840007387206021, guid: f770156af2dc13646930d09fc283e0ef, type: 3}
   words: []
   currentWord: 

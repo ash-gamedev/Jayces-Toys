@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpellingLetterBlockGame : MonoBehaviour
+public class SpellingLetterBlockGame : Game
 {
     // serialize fields
     [SerializeField] Transform placeholderLetterBlocksGroup;
@@ -18,40 +18,45 @@ public class SpellingLetterBlockGame : MonoBehaviour
     System.Random random;
 
     DragController dragController;
-    Coroutine startGame;
 
-    #region Start, Update, etc.
-
-    // Use this for initialization
-    void Start()
+    #region Game states
+    public override void OnPrepareGame()
     {
+        base.OnPrepareGame();
+
         random = new System.Random();
         dragController = FindObjectOfType<DragController>();
 
         words = new List<string>
         {
-            "Count", "Start", "Light"
+            "Count", "Start", "Light", "Dog", "Cat", "Drive", "Frog"
         };
+
+        OnPrepareLevel();
+    }
+
+    public override void OnPrepareLevel()
+    {
+        base.OnPrepareLevel();
 
         SelectNextWord();
     }
 
-    private void Update()
+    public override void OnPlayLevel()
     {
-        if(dragController?.AllTargetsReached() == true && startGame == null)
-        {
-            startGame = StartCoroutine(WaitAndSelectNextWord());
-        }
+        base.OnPlayLevel();
+
+        // drag controller controls the gameplay for this level
+        dragController.OnUpdate();
+    }
+
+    public override bool IsLevelComplete()
+    {
+        return dragController?.AllTargetsReached() == true;
     }
     #endregion
 
-    IEnumerator WaitAndSelectNextWord()
-    {
-        AudioManager.instance.PlaySoundEffect(EnumSoundName.Victory);
-        yield return new WaitForSeconds(2f);
-        SelectNextWord();
-        startGame = null;
-    }
+    #region Game functions
 
     public void SelectNextWord()
     {
@@ -64,6 +69,9 @@ public class SpellingLetterBlockGame : MonoBehaviour
 
         // instantiate letter blocks for word
         InstantiateLetterBlocks();
+
+        // play level
+        OnPlayLevel();
     }
 
     private void InstantiateLetterBlocks()
@@ -104,6 +112,8 @@ public class SpellingLetterBlockGame : MonoBehaviour
             letterBlockInstance.GetComponent<Draggable>().DragTarget = placeholderLetterBlockInstance.GetComponent<DragTarget>();
         }
     }
+    #endregion
+
 
     #region Helper functions
 

@@ -24,7 +24,7 @@ public class DragController : MonoBehaviour
         }
     }
 
-    void Update()
+    public void OnUpdate()
     {
         if (Touchscreen.current?.primaryTouch?.press?.isPressed != null)
         {
@@ -92,6 +92,9 @@ public class DragController : MonoBehaviour
         // audio played when target reached
         if (lastDragged?.movementDestination != null && lastDragged?.TargetReached == false)
             AudioManager.instance.PlaySoundEffect(EnumSoundName.DraggableDrop);
+        // audio played when target not reached (swish sound back in place)
+        else
+            AudioManager.instance.PlaySoundEffect(EnumSoundName.DraggableSwish);
 
         UpdateDragStatus(false);
     }

@@ -13,5 +13,15 @@ public enum EnumSoundName
     DraggablePickUp,
     DraggableDrop,
     Drawing,
-    Victory
+    Victory,
+    DraggableSwish
+}
+
+public enum EnumGameState
+{
+    GamePrepare,
+    LevelPrepare,
+    LevelInPlay,
+    LevelCompleted,
+    GameCompleted
 }
