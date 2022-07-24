@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour, IGame
 {
@@ -45,8 +46,6 @@ public class Game : MonoBehaviour, IGame
     public virtual void OnGameComplete()
     {
         gameState = EnumGameState.GameCompleted;
-
-        // todo: show menu
     }
 
     public virtual bool IsLevelComplete()

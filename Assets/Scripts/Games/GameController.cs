@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    // serilizable fields
+    [SerializeField] GameObject levelFinishedPanel;
+    [SerializeField] GameObject backButton;
+
+    // the current game
     Game game;
 
     // Use this for initialization
@@ -21,5 +26,21 @@ public class GameController : MonoBehaviour
                 game.OnLevelComplete();
             else
                 game.OnPlayLevel();
+
+        if (game.GameState == EnumGameState.GameCompleted)
+            ShowGameCompleteMenu();
+
+    }
+
+    void ShowGameCompleteMenu()
+    {
+        if(levelFinishedPanel.active == false)
+        {
+            // show menu
+            levelFinishedPanel.SetActive(true);
+
+            // hide back button
+            backButton.SetActive(false);
+        }
     }
 }

@@ -24,4 +24,10 @@ public class LevelSelector : MonoBehaviour
     {
         SceneManager.LoadScene("SpellingLetterBlocks");
     }
+
+    public void ReLoadLevel()
+    {
+        int buildIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(buildIndex);
+    }
 }
