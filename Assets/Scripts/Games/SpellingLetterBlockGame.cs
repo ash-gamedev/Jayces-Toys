@@ -39,7 +39,11 @@ public class SpellingLetterBlockGame : Game
     {
         base.OnPrepareLevel();
 
+        // set up
         SelectNextWord();
+
+        // play level
+        OnPlayLevel();
     }
 
     public override void OnPlayLevel()
@@ -69,9 +73,6 @@ public class SpellingLetterBlockGame : Game
 
         // instantiate letter blocks for word
         InstantiateLetterBlocks();
-
-        // play level
-        OnPlayLevel();
     }
 
     private void InstantiateLetterBlocks()

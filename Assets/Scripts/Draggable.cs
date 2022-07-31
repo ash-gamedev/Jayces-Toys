@@ -91,11 +91,6 @@ public class Draggable : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (isDragging)
-        {
-            Debug.Log(collision.name);
-            Debug.Log(collision.gameObject.transform.position + " " + dragTarget?.transform.position);
-        }
         if (collision.gameObject.transform.position == dragTarget?.transform.position && isDragging)
         {
             movementDestination = dragTarget.transform.position;
