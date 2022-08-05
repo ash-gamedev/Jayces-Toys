@@ -98,6 +98,17 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Stop music track from playing in the audio manager.
+    /// </summary>
+    public void StopMusicTrack()
+    {
+        // find any tracks currently playing
+        Sound playingMusicTrack = musicTracks.FirstOrDefault(s => s.source.isPlaying == true);
+
+        playingMusicTrack?.source?.Stop();
+    }
+
+    /// <summary>
     /// Used to update the volume for all of the music tracks.
     /// </summary>
     /// <param name="volume">A value between 0..1</param>

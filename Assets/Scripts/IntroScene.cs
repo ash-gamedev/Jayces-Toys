@@ -1,19 +1,36 @@
 ﻿using System.Collections;
 using UnityEngine;
+using DG.Tweening;
+using System.Collections.Generic;
 
 public class IntroScene : MonoBehaviour
 {
+    [SerializeField] float fadeTime = 1f;
+    [SerializeField] List<GameObject> colourBlocks = new List<GameObject>();
 
-    // Use this for initialization
-    void Start()
+    private void Start()
     {
-        AudioManager.instance.PlaySoundEffect(EnumSoundName.IntroSoundEffect);
+        AudioManager.instance?.StopMusicTrack();
+        StartCoroutine(ItemsAnimation());
     }
-        
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator ItemsAnimation()
     {
+        foreach (var colourBlock in colourBlocks)
+        {
+            colourBlock.transform.localScale = Vector3.zero;
+        }
 
+        foreach (var colourBlock in colourBlocks)
+        {
+            colourBlock.transform.DOScale(1f, fadeTime).SetEase(Ease.OutBounce);
+            yield return new WaitForSeconds(0.25f);
+        }
+
+        AudioManager.instance?.PlaySoundEffect(EnumSoundName.IntroSoundEffect);
+
+        yield return new WaitForSeconds(0.5f);
+
+        AudioManager.instance?.PlayMusicTrack(EnumSoundName.MainTheme);
     }
 }
