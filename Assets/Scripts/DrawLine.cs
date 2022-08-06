@@ -7,13 +7,21 @@ namespace Assets.Scripts
 {
     public class DrawLine : MonoBehaviour
     {
-        public GameObject linePrefab;
-        public GameObject currentLine;
+        [SerializeField] GameObject linePrefab;
+        [SerializeField] Collider2D collider;
+        [SerializeField] Collider2D innerCollider;
 
-        public LineRenderer lineRenderer;
-        public List<Vector2> fingerPositions;
+        GameObject currentLine;
+
+        LineRenderer lineRenderer;
+        List<Vector2> fingerPositions;
 
         bool isDrawing = false;
+
+        private void Start()
+        {
+            fingerPositions = new List<Vector2>();
+        }
 
         // Update is called once per frame
         void Update()
@@ -33,20 +41,32 @@ namespace Assets.Scripts
                 // convert to world space
                 Vector2 worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
 
-                // check if draw is already active
-                if (isDrawing)
+                // check if point is within bounds of shape
+                if (IsWithinBounds(worldPosition))
                 {
-                    // update line if certain distance away
-                    if (Vector2.Distance(worldPosition, fingerPositions[fingerPositions.Count - 1]) > .1f)
+                    if (isDrawing)
                     {
-                        UpdateLine(worldPosition);
+                        // update line if certain distance away
+                        if (Vector2.Distance(worldPosition, fingerPositions[fingerPositions.Count - 1]) > .1f)
+                        {
+                            UpdateLine(worldPosition);
+                        }
+                    }
+                    else
+                    {
+                        CreateLine(worldPosition);
                     }
                 }
                 else
                 {
-                    CreateLine(worldPosition);
+                    FinishLine();
                 }
             }
+        }
+
+        bool IsWithinBounds(Vector2 worldPosition)
+        {
+            return collider.bounds.Contains(worldPosition) && !innerCollider.bounds.Contains(worldPosition);
         }
 
         void CreateLine(Vector2 worldPosition)

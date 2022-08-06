@@ -7,7 +7,6 @@ public class EtchSketchGame : Game
 {
     [SerializeField] private List<Transform> shapeTransforms; 
     [SerializeField] private LineController dottedLine;
-    [SerializeField] private LineController line;
 
     private List<Transform> currentShape;
     System.Random random;
