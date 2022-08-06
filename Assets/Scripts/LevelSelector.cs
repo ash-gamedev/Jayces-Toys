@@ -25,6 +25,11 @@ public class LevelSelector : MonoBehaviour
         SceneManager.LoadScene("SpellingLetterBlocks");
     }
 
+    public void LoadMatchingCardGameScene()
+    {
+        SceneManager.LoadScene("MatchingCardGame");
+    }
+
     public void ReLoadLevel()
     {
         int buildIndex = SceneManager.GetActiveScene().buildIndex;
