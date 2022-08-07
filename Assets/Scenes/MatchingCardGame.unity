@@ -277,7 +277,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 130, y: 130}
+  m_CellSize: {x: 200, y: 200}
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 1
   m_ConstraintCount: 3
@@ -491,15 +491,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardSprites:
-  - {fileID: 81442633, guid: 0271dac7769190141b0f3ee86b336f44, type: 3}
-  - {fileID: 621191305, guid: 0271dac7769190141b0f3ee86b336f44, type: 3}
-  - {fileID: -1873640666, guid: 0271dac7769190141b0f3ee86b336f44, type: 3}
-  - {fileID: -948135351, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
-  - {fileID: -1441283534, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
-  - {fileID: -1514160540, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
-  - {fileID: 1434321422, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
-  - {fileID: 528041508, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
-  - {fileID: 1727456473, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
+  - {fileID: -710488570, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
+  - {fileID: -722503783, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
+  - {fileID: -73397450, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
+  - {fileID: -664108114, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
+  - {fileID: -12110608, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
+  - {fileID: -227686468, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
+  - {fileID: -1671900574, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
+  - {fileID: 1143742945, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
+  - {fileID: 1609563645, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
+  - {fileID: 792050408, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
+  - {fileID: -1701573891, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
+  - {fileID: -273259843, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
   cardPrefab: {fileID: 306045566525717972, guid: 488fb46fcda824b4d939d0ce54820b76, type: 3}
   cardParentTransform: {fileID: 860871807}
   SelectedCards: []
