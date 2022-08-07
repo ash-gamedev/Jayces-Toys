@@ -10,11 +10,13 @@ public class MatchingCardGame : Game
     [SerializeField] GameObject cardPrefab;
     [SerializeField] RectTransform cardParentTransform;
 
+    GridLayoutGroup gridLayoutGroup;
     public List<Card> SelectedCards;
-    int numberOfSets = 3;
     int numberOfSetsMatched = 0;
 
     System.Random random;
+
+    int[] numberOfSetsPerLevel;
 
     #region Game states
     public override void OnPrepareGame()
@@ -22,8 +24,9 @@ public class MatchingCardGame : Game
         base.OnPrepareGame();
 
         random = new System.Random();
-
+        numberOfSetsPerLevel = new int[]{ 2, 3, 4 };
         SelectedCards = new List<Card>();
+        gridLayoutGroup = cardParentTransform.GetComponent<GridLayoutGroup>();
 
         OnPrepareLevel();
     }
@@ -42,7 +45,7 @@ public class MatchingCardGame : Game
     public override bool IsLevelComplete()
     {
         // when there's no more cards
-        return numberOfSetsMatched == numberOfSets;
+        return numberOfSetsMatched == numberOfSetsPerLevel[levelsCompleted];
     }
     #endregion
 
@@ -74,6 +77,7 @@ public class MatchingCardGame : Game
         List<Sprite> sprites = new List<Sprite>();
 
         // get list of random sprites
+        int numberOfSets = numberOfSetsPerLevel[levelsCompleted];
         for (int i = 0; i < numberOfSets; i++)
         {
             // get random
@@ -90,6 +94,9 @@ public class MatchingCardGame : Game
 
         // shuffle list of sprites
         List<Sprite> shuffledSprites = Shuffle(sprites);
+
+        // set number of columns for grid layout based on number of sets
+        gridLayoutGroup.constraintCount = numberOfSets;
 
         // instantiate cards with sprites
         foreach (Sprite sprite in shuffledSprites)
