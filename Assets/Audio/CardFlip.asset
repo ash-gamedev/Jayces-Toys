@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28befaca1118d2d4284d29009394fe6d, type: 3}
-  m_Name: MainTheme
+  m_Name: CardFlip
   m_EditorClassIdentifier: 
-  soundName: 0
-  clip: {fileID: 8300000, guid: 7538ffdb358cf3447a5f1d567f9f0355, type: 3}
-  volume: 0.75
+  soundName: 8
+  clip: {fileID: 8300000, guid: bfdfcb295c5438e449b95bc2849061c5, type: 3}
+  volume: 1
   pitch: 1
-  loop: 1
+  loop: 0
   source: {fileID: 0}

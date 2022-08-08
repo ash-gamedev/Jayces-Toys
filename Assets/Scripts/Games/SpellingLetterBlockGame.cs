@@ -163,12 +163,16 @@ public class SpellingLetterBlockGame : Game
     {
         yield return new WaitForSeconds(1f);
 
+        AudioManager.instance?.PlaySoundEffect(EnumSoundName.JigglingParts);
+
         List<DraggableAnimation> draggableAnimations = FindObjectsOfType<DraggableAnimation>().ToList();
         foreach (DraggableAnimation draggableAnimation in draggableAnimations)
         {
             draggableAnimation.StartAnimation();
             yield return new WaitForSeconds(0.1f);
         }
+
+        AudioManager.instance?.PlaySoundEffect(EnumSoundName.DraggableSwish);
 
         // wait for movement to finish
         yield return new WaitForSeconds(draggableAnimations[0].movementTime);

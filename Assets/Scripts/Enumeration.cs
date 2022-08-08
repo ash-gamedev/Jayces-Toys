@@ -14,7 +14,12 @@ public enum EnumSoundName
     DraggableDrop,
     Drawing,
     Victory,
-    DraggableSwish
+    DraggableSwish,
+    CardFlip,
+    CardDeal,
+    CardMatch,
+    CardMismatch,
+    JigglingParts
 }
 
 public enum EnumGameState

@@ -44,12 +44,14 @@ public class Card : MonoBehaviour
 
     public void FlipCardToFront()
     {
+        AudioManager.instance?.PlaySoundEffect(EnumSoundName.CardFlip);
         matchingCardGame.SelectCard(this);
         cardAnimation.StartFront();
     }
 
     public void FlipCardToBack()
     {
+        AudioManager.instance?.PlaySoundEffect(EnumSoundName.CardFlip);
         matchingCardGame.DeselectCard(this);
         cardAnimation.StartBack();
     }

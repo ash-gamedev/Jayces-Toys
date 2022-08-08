@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7076869128684775981, guid: 738af181f8498e34c96401b0fe55e0ba, type: 3}
       propertyPath: orthographic size
-      value: 6.328125
+      value: 8.4375
       objectReference: {fileID: 0}
     - target: {fileID: 7076869128684775982, guid: 738af181f8498e34c96401b0fe55e0ba, type: 3}
       propertyPath: m_Name
@@ -518,6 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6b4d4750ccddc4ab5cf714a7011abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelsCompleted: 0
   placeholderLetterBlocksGroup: {fileID: 1705696555}
   letterBlocksGroup: {fileID: 1819866217}
   letterBlockPrefabs:
