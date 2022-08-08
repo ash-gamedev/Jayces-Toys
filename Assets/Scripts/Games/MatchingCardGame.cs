@@ -119,14 +119,14 @@ public class MatchingCardGame : Game
         // wait for any card flipping animations to start
         yield return new WaitUntil(() => card1.cardAnimation.mCardState == CardState.Front && card2.cardAnimation.mCardState == CardState.Front);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         // check if they're matching
         if (card1.Image.sprite.name == card2.Image.sprite.name)
         {
-            // TODO: sound effect
-            // TODO: animation
-            Debug.Log("Hiding cards. " + card1.Image.sprite.name + " " + card2.Image.sprite.name);
+            AudioManager.instance?.PlaySoundEffect(EnumSoundName.CardMatch);
+
+            yield return new WaitForSeconds(0.5f);
 
             card1.HideCard();
             card2.HideCard();
@@ -135,9 +135,9 @@ public class MatchingCardGame : Game
         }
         else
         {
-            // wrong - flip both cards over
-            // TODO: sound effect
-            Debug.Log("Flipping cards");
+            AudioManager.instance?.PlaySoundEffect(EnumSoundName.CardMismatch);
+
+            yield return new WaitForSeconds(0.5f);
 
             card1.FlipCardToBack();
             card2.FlipCardToBack();

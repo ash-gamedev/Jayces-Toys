@@ -583,6 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b3e065ba1bfcc243b29967f0c80e723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelsCompleted: 0
   shapeTransforms:
   - {fileID: 1949331018304150643, guid: 833a70793435b8d4c9cef871de929c29, type: 3}
   dottedLine: {fileID: 1834247704}
@@ -999,18 +1000,6 @@ PrefabInstance:
     - target: {fileID: 1775319842655264215, guid: 5990f60996c07e744b011c737e640667, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1775319842655264215, guid: 5990f60996c07e744b011c737e640667, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1775319843770274133, guid: 5990f60996c07e744b011c737e640667, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1775319843770274133, guid: 5990f60996c07e744b011c737e640667, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadLevelSelectorScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5990f60996c07e744b011c737e640667, type: 3}
