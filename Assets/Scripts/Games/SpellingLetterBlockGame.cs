@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,9 +42,6 @@ public class SpellingLetterBlockGame : Game
 
         // set up
         SelectNextWord();
-
-        // play level
-        OnPlayLevel();
     }
 
     public override void OnPlayLevel()
@@ -98,7 +96,9 @@ public class SpellingLetterBlockGame : Game
 
             // set letter
             string letter = currentWord[i].ToString();
-            letterBlockInstance.GetComponent<LetterBlock>().SetLetter(letter);
+            LetterBlock letterBlock = letterBlockInstance.GetComponent<LetterBlock>();
+            letterBlock.SetLetter(letter);
+            letterBlock.GetComponent<Draggable>().StartPosition = letterBlock.transform.position;
 
             // instantiate letter block placeholder
             int xPosition = xPositions[i];
@@ -108,10 +108,12 @@ public class SpellingLetterBlockGame : Game
 
             // set letter
             placeholderLetterBlockInstance.GetComponent<LetterBlock>().SetLetter(letter);
-
+            
             // set drag target
             letterBlockInstance.GetComponent<Draggable>().DragTarget = placeholderLetterBlockInstance.GetComponent<DragTarget>();
         }
+
+        StartCoroutine(StartingBlockAnimation());
     }
     #endregion
 
@@ -157,5 +159,22 @@ public class SpellingLetterBlockGame : Game
         return listCopy;
     }
 
+    IEnumerator StartingBlockAnimation()
+    {
+        yield return new WaitForSeconds(1f);
+
+        List<DraggableAnimation> draggableAnimations = FindObjectsOfType<DraggableAnimation>().ToList();
+        foreach (DraggableAnimation draggableAnimation in draggableAnimations)
+        {
+            draggableAnimation.StartAnimation();
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        // wait for movement to finish
+        yield return new WaitForSeconds(draggableAnimations[0].movementTime);
+
+        // play level
+        OnPlayLevel();
+    }
     #endregion
 }

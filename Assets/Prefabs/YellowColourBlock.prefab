@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5165271634089421597}
   - component: {fileID: 1738463134699828439}
   - component: {fileID: 692431190354695505}
+  - component: {fileID: 989438866426317885}
   m_Layer: 0
   m_Name: YellowColourBlock
   m_TagString: Untagged
@@ -163,6 +164,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &989438866426317885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082073620705658680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e622c24f59a80f74db100f6fcc3fba1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1204521158308797302
 GameObject:
   m_ObjectHideFlags: 0

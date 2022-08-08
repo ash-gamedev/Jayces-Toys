@@ -71,6 +71,9 @@ public class PotatoeHeadGame : Game
             yield return new WaitForSeconds(0.1f);
         }
 
+        // wait for movement to finish
+        yield return new WaitForSeconds(draggableAnimations[0].movementTime);
+
         // play level
         OnPlayLevel();
     }

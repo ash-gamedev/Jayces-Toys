@@ -33,6 +33,7 @@ public class Draggable : MonoBehaviour
         set
         {
             dragTarget = value;
+            gameObject.transform.position = dragTarget.transform.position;
         }
     }
     public bool TargetReached => transform.position == dragTarget?.transform.position;
@@ -52,9 +53,8 @@ public class Draggable : MonoBehaviour
     private void Awake()
     {
         StartPosition = gameObject.transform.position;
-        Debug.Log("Before: " + transform.position + " - " + dragTarget.transform.position);
-        gameObject.transform.position = dragTarget.transform.position;
-        Debug.Log("After: " + transform.position + " - " + dragTarget.transform.localPosition);
+        if (dragTarget != null)
+            gameObject.transform.position = dragTarget.transform.position;
     }
 
     private void Start()

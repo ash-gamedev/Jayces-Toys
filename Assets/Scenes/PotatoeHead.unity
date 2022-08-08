@@ -430,14 +430,6 @@ PrefabInstance:
       propertyPath: dragTarget
       value: 
       objectReference: {fileID: 871675268}
-    - target: {fileID: 7214391767175484098, guid: d8b276299679fdd4d8211caea7fab592, type: 3}
-      propertyPath: sprites.Array.data[0]
-      value: 
-      objectReference: {fileID: -1602877246, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
-    - target: {fileID: 7214391767175484098, guid: d8b276299679fdd4d8211caea7fab592, type: 3}
-      propertyPath: sprites.Array.data[2]
-      value: 
-      objectReference: {fileID: -1602877246, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8b276299679fdd4d8211caea7fab592, type: 3}
 --- !u!4 &584836820 stripped
@@ -646,10 +638,6 @@ PrefabInstance:
       propertyPath: dragTarget
       value: 
       objectReference: {fileID: 2127173850}
-    - target: {fileID: 8196727595167702879, guid: 4decfff1a3939114a9c3e31e7d179eca, type: 3}
-      propertyPath: sprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 422929712, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4decfff1a3939114a9c3e31e7d179eca, type: 3}
 --- !u!4 &820368647 stripped
@@ -992,6 +980,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eyes
       objectReference: {fileID: 0}
+    - target: {fileID: 7024994402963014637, guid: 5cf10f00aeb192f45b9d3afd4402ba80, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7024994402963014640, guid: 5cf10f00aeb192f45b9d3afd4402ba80, type: 3}
       propertyPath: dragTarget
       value: 
@@ -1054,14 +1046,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 817644845}
     m_Modifications:
-    - target: {fileID: 1708801117765889338, guid: 83184d39a54ec60489f64749b5f13012, type: 3}
-      propertyPath: sprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 1688609643, guid: 0271dac7769190141b0f3ee86b336f44, type: 3}
-    - target: {fileID: 9158411811645204208, guid: 83184d39a54ec60489f64749b5f13012, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 788364712, guid: 6ab820d224241e94694ccc7ecc14f915, type: 3}
     - target: {fileID: 9158411811645204212, guid: 83184d39a54ec60489f64749b5f13012, type: 3}
       propertyPath: m_Name
       value: Shoes
@@ -1647,10 +1631,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 817644845}
     m_Modifications:
-    - target: {fileID: 719998224705485546, guid: 7228f96d874569d47b78c71bfd9038b0, type: 3}
-      propertyPath: sprites.Array.data[0]
-      value: 
-      objectReference: {fileID: -2117469007, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
     - target: {fileID: 3055545544868140096, guid: 7228f96d874569d47b78c71bfd9038b0, type: 3}
       propertyPath: dragTarget
       value: 
@@ -1841,14 +1821,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 817644845}
     m_Modifications:
-    - target: {fileID: 4977650055861939525, guid: 2cc6ffb5e3ccd814a9da917b7d72f158, type: 3}
-      propertyPath: sprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 1909739255, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
-    - target: {fileID: 4977650055861939525, guid: 2cc6ffb5e3ccd814a9da917b7d72f158, type: 3}
-      propertyPath: sprites.Array.data[2]
-      value: 
-      objectReference: {fileID: 1909739255, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
     - target: {fileID: 5021588545846151680, guid: 2cc6ffb5e3ccd814a9da917b7d72f158, type: 3}
       propertyPath: m_Name
       value: Left Ear

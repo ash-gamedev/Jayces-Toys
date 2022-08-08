@@ -5,6 +5,7 @@ using DG.Tweening;
 public class DraggableAnimation : MonoBehaviour
 {
     Draggable draggable;
+    [HideInInspector] public float movementTime = 1f;
 
     // Use this for initialization
     void Awake()
@@ -31,6 +32,6 @@ public class DraggableAnimation : MonoBehaviour
         //mySequence.PrependInterval(1);
 
         // move to start position
-        mySequence.Append(transform.DOMove(draggable.StartPosition, 1f));
+        mySequence.Append(transform.DOMove(draggable.StartPosition, movementTime));
     }
 }

@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 6128358998880835556}
   - component: {fileID: 2516205555854347892}
   - component: {fileID: 8617032778152666635}
+  - component: {fileID: 4765090039689044975}
   m_Layer: 0
   m_Name: RedColourBlock
   m_TagString: Untagged
@@ -260,3 +261,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4765090039689044975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423991637421040309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e622c24f59a80f74db100f6fcc3fba1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
