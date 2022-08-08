@@ -45,7 +45,7 @@ public class MatchingCardGame : Game
     public override bool IsLevelComplete()
     {
         // when there's no more cards
-        return numberOfSetsMatched == numberOfSetsPerLevel[levelsCompleted];
+        return FindObjectsOfType<Card>().Where(x => x.isHidden == false).Count() == 0;
     }
     #endregion
 
@@ -119,17 +119,19 @@ public class MatchingCardGame : Game
         // wait for any card flipping animations to start
         yield return new WaitUntil(() => card1.cardAnimation.mCardState == CardState.Front && card2.cardAnimation.mCardState == CardState.Front);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.4f);
 
         // check if they're matching
         if (card1.Image.sprite.name == card2.Image.sprite.name)
         {
             AudioManager.instance?.PlaySoundEffect(EnumSoundName.CardMatch);
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.25f);
 
             card1.HideCard();
             card2.HideCard();
+
+            yield return new WaitForSeconds(0.25f);
 
             numberOfSetsMatched++;
         }

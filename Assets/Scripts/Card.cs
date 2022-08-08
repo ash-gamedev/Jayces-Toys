@@ -67,8 +67,19 @@ public class Card : MonoBehaviour
     {
         yield return new WaitUntil(() => cardAnimation.isActive == false);
 
-        isHidden = true;
+        // Create a sequence
+        Sequence mySequence = DOTween.Sequence();
 
-        gameObject.transform.DOScale(Vector3.zero, 2f);
+        // move to other
+        Vector3 otherCardPosition = FindObjectsOfType<Card>().FirstOrDefault(x => x.Image.sprite == Image.sprite).transform.position;
+        Vector3 targetPosition = otherCardPosition; // (transform.position + otherCardPosition) * 0.5f;
+        mySequence.Append(transform.DOMove(targetPosition, 0.55f));
+
+        // scale down
+        mySequence.Append(transform.DOScale(Vector3.zero, 0.75f));
+
+        yield return new WaitForSeconds(2f);
+
+        isHidden = true;
     }
 }
