@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6934773594309191859}
   - component: {fileID: 6934773594309191856}
   - component: {fileID: 4311585206776856935}
+  - component: {fileID: 1163225828377327158}
   m_Layer: 6
   m_Name: Left Arm
   m_TagString: Untagged
@@ -166,3 +167,15 @@ MonoBehaviour:
   - {fileID: -1852286606, guid: 0271dac7769190141b0f3ee86b336f44, type: 3}
   - {fileID: -1852286606, guid: 0271dac7769190141b0f3ee86b336f44, type: 3}
   - {fileID: -1852286606, guid: 0271dac7769190141b0f3ee86b336f44, type: 3}
+--- !u!114 &1163225828377327158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6934773594309191869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e622c24f59a80f74db100f6fcc3fba1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

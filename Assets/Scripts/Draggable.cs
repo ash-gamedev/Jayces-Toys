@@ -47,46 +47,58 @@ public class Draggable : MonoBehaviour
     private float movementTime = 15f;
     public System.Nullable<Vector3> movementDestination;
 
+    Game game;
+
+    private void Awake()
+    {
+        StartPosition = gameObject.transform.position;
+        Debug.Log("Before: " + transform.position + " - " + dragTarget.transform.position);
+        gameObject.transform.position = dragTarget.transform.position;
+        Debug.Log("After: " + transform.position + " - " + dragTarget.transform.localPosition);
+    }
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        StartPosition = transform.position;
+        game = FindObjectOfType<Game>();
     }
 
     private void FixedUpdate()
     {
-        if (TargetReached == false)
+        if (game.GameState == EnumGameState.LevelInPlay)
         {
-            if (movementDestination.HasValue)
+            if (TargetReached == false)
             {
-                // reset movement destination is still dragging
-                if (isDragging)
+                if (movementDestination.HasValue)
                 {
-                    movementDestination = null;
-                    return;
-                }
+                    // reset movement destination is still dragging
+                    if (isDragging)
+                    {
+                        movementDestination = null;
+                        return;
+                    }
 
-                if (transform.position == movementDestination)
-                {
-                    spriteRenderer.sortingOrder = Layer.Default;
-                    movementDestination = null;
+                    if (transform.position == movementDestination)
+                    {
+                        spriteRenderer.sortingOrder = Layer.Default;
+                        movementDestination = null;
+                    }
+                    else
+                    {
+                        // smoothly move
+                        transform.position = Vector3.Lerp(transform.position, movementDestination.Value, movementTime * Time.fixedDeltaTime);
+                    }
                 }
                 else
                 {
+                    if (isDragging || transform.position == StartPosition) return;
+
                     // smoothly move
-                    transform.position = Vector3.Lerp(transform.position, movementDestination.Value, movementTime * Time.fixedDeltaTime);
+                    transform.position = Vector3.Lerp(transform.position, StartPosition, movementTime * 0.25f * Time.fixedDeltaTime);
                 }
             }
-            else
-            {
-                if (isDragging || transform.position == StartPosition) return;
 
-                // smoothly move
-                transform.position = Vector3.Lerp(transform.position, StartPosition, movementTime * 0.25f * Time.fixedDeltaTime);
-            }
         }
-
     }
 
     private void OnTriggerStay2D(Collider2D collision)

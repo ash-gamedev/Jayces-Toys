@@ -6,6 +6,7 @@ using UnityEngine;
 public class PotatoeHeadGame : Game
 {
     List<PotatoeHeadPart> potatoeHeadParts;
+    List<DraggableAnimation> draggableAnimations;
     DragController dragController;
 
     System.Random random;
@@ -19,6 +20,7 @@ public class PotatoeHeadGame : Game
         random = new System.Random();
         dragController = FindObjectOfType<DragController>();
         potatoeHeadParts = FindObjectsOfType<PotatoeHeadPart>().ToList();
+        draggableAnimations = FindObjectsOfType<DraggableAnimation>().ToList();
 
         OnPrepareLevel();
     }
@@ -28,9 +30,6 @@ public class PotatoeHeadGame : Game
         base.OnPrepareLevel();
 
         SelectPotatoeHeadParts();
-
-        // play level
-        OnPlayLevel();
     }
 
     public override void OnPlayLevel()
@@ -55,11 +54,25 @@ public class PotatoeHeadGame : Game
         foreach(PotatoeHeadPart potatoeHeadPart in potatoeHeadParts)
         {
             potatoeHeadPart.SetSpriteByIndex(index);
-            potatoeHeadPart.ReturnToStartPosition();
         }
+
+        StartCoroutine(StartingPotatoeHeadAnimation());
 
         index++;
     }
 
+    IEnumerator StartingPotatoeHeadAnimation()
+    {
+        yield return new WaitForSeconds(1f);
+
+        foreach (DraggableAnimation draggableAnimation in draggableAnimations)
+        {
+            draggableAnimation.StartAnimation();
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        // play level
+        OnPlayLevel();
+    }
     #endregion
 }

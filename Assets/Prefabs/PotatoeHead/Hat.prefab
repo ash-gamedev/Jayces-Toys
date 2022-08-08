@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3055545544868140111}
   - component: {fileID: 3055545544868140108}
   - component: {fileID: 719998224705485546}
+  - component: {fileID: 6291446685544352410}
   m_Layer: 6
   m_Name: Hat
   m_TagString: Untagged
@@ -163,6 +164,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 81442633, guid: 0271dac7769190141b0f3ee86b336f44, type: 3}
+  - {fileID: -2117469007, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
   - {fileID: -948135351, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
   - {fileID: -1441283534, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
+--- !u!114 &6291446685544352410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3055545544868140098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e622c24f59a80f74db100f6fcc3fba1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

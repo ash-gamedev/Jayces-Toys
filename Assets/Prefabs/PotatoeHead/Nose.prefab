@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 10000385930200643}
   - component: {fileID: 10000385930200644}
   - component: {fileID: 8196727595167702879}
+  - component: {fileID: 998907350459964942}
   m_Layer: 6
   m_Name: Nose
   m_TagString: Untagged
@@ -163,6 +164,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: -1873640666, guid: 0271dac7769190141b0f3ee86b336f44, type: 3}
+  - {fileID: 422929712, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
   - {fileID: 437998511, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
   - {fileID: -978539568, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
+--- !u!114 &998907350459964942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10000385930200641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e622c24f59a80f74db100f6fcc3fba1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7024994402963014646}
   - component: {fileID: 7024994402963014647}
   - component: {fileID: 7995866152373470753}
+  - component: {fileID: 7907010666454724251}
   m_Layer: 6
   m_Name: Eyes
   m_TagString: Untagged
@@ -166,3 +167,15 @@ MonoBehaviour:
   - {fileID: 621191305, guid: 0271dac7769190141b0f3ee86b336f44, type: 3}
   - {fileID: 528041508, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
   - {fileID: -1514160540, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
+--- !u!114 &7907010666454724251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7024994402963014637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e622c24f59a80f74db100f6fcc3fba1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
