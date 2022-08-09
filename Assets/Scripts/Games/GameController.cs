@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         game = FindObjectOfType<Game>();
-        StartCoroutine(WaitForSceneTransitionAndStartGame());
+        game.OnPrepareGame();
     }
 
     // Update is called once per frame
@@ -30,14 +30,6 @@ public class GameController : MonoBehaviour
         if (game.GameState == EnumGameState.GameCompleted)
             ShowGameCompleteMenu();
 
-    }
-
-    IEnumerator WaitForSceneTransitionAndStartGame()
-    {
-        LevelSelector levelSelector = FindObjectOfType<LevelSelector>();
-        yield return new WaitUntil(() => levelSelector.transitionPanel.activeSelf == false);
-
-        game.OnPrepareGame();
     }
 
     void ShowGameCompleteMenu()
