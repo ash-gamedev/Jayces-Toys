@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 1918231422, guid: 0271dac7769190141b0f3ee86b336f44, type: 3}
+  - {fileID: -40626202, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
   - {fileID: 1727456473, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
   - {fileID: 1434321422, guid: c08578954ce9e574188286b7fdfa236a, type: 3}
 --- !u!114 &7556895125962919537
@@ -179,3 +179,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e622c24f59a80f74db100f6fcc3fba1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementTime: 1

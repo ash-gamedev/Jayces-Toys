@@ -36,6 +36,13 @@ public class Game : MonoBehaviour, IGame
         // increment level complete
         levelsCompleted += 1;
 
+        StartCoroutine(WaitAndPrepareNextLevel());
+    }
+
+    private IEnumerator WaitAndPrepareNextLevel()
+    {
+        yield return new WaitForSeconds(1.5f);
+
         // check if 3 levels were completed to end game
         if (levelsCompleted == 3)
             OnGameComplete();
