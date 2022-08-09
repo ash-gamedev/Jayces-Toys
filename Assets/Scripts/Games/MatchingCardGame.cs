@@ -37,9 +37,6 @@ public class MatchingCardGame : Game
 
         // set up
         SelectSetOfCards();
-
-        // play level
-        OnPlayLevel();
     }
 
     public override bool IsLevelComplete()
@@ -69,11 +66,6 @@ public class MatchingCardGame : Game
     {
         numberOfSetsMatched = 0;
 
-        // remove any previous cards
-        List<Card> cards = FindObjectsOfType<Card>().ToList();
-        foreach(Card card in cards)
-            Destroy(card.gameObject);
-
         List<Sprite> sprites = new List<Sprite>();
 
         // get list of random sprites
@@ -99,16 +91,54 @@ public class MatchingCardGame : Game
         gridLayoutGroup.constraintCount = numberOfSets;
 
         // instantiate cards with sprites
-        foreach (Sprite sprite in shuffledSprites)
-        {
-            InstantiateCard(sprite);
-        }
+        StartCoroutine(InstantiateCards(shuffledSprites));
     }
 
     void InstantiateCard(Sprite sprite)
     {
         GameObject cardInstance = Instantiate(cardPrefab, cardParentTransform);
-        cardInstance.GetComponent<Card>().Image.sprite = sprite;
+        Card card = cardInstance.GetComponent<Card>();
+        card.Image.sprite = sprite;
+        card.cardAnimation.EnableCard(false);
+    }
+
+    IEnumerator InstantiateCards(List<Sprite> sprites)
+    {
+        // remove any previous cards
+        List<Card> previousCards = FindObjectsOfType<Card>().ToList();
+        for (int i = previousCards.Count - 1; i >= 0; i--)
+        {
+            Destroy(previousCards[i].gameObject);
+            previousCards.RemoveAt(i);
+        }
+
+        // wait until previous cards are officially destroyed
+        yield return new WaitUntil(() => FindObjectsOfType<Card>().Count() == 0);
+
+        // instantiate new cards
+        foreach (Sprite sprite in sprites)
+        {
+            InstantiateCard(sprite);
+        }
+
+        // show each cards
+        List<Card> cards = FindObjectsOfType<Card>().ToList();
+        for(int i = cards.Count() - 1; i >= 0; i--)
+        {
+            AudioManager.instance?.PlaySoundEffect(EnumSoundName.CardFlip);
+            cards[i].cardAnimation.EnableCard(true);
+            yield return new WaitForSeconds(0.4f);
+        }
+
+        yield return new WaitForSeconds(1.75f);
+
+        foreach (Card card in cards)
+        {
+            card.FlipCardToBack();
+        }
+
+        // play level
+        OnPlayLevel();
     }
 
     IEnumerator CheckForMatchingCards()

@@ -35,25 +35,17 @@ public class CardAnimation : MonoBehaviour
             mBack.transform.eulerAngles = Vector3.zero;
         }
 
-        StartCoroutine(ShowCardThenHideCard());
+        
     }
     private void Start()
     {
         Init();
     }
 
-
-    IEnumerator ShowCardThenHideCard()
+    public void EnableCard(bool enabled)
     {
-        yield return new WaitUntil(() => isActive == false);
-
-        StartFront();
-
-        yield return new WaitForSeconds(2f);
-
-        yield return new WaitUntil(() => isActive == false);
-
-        StartBack();
+        mFront.SetActive(enabled);
+        mBack.SetActive(enabled);
     }
 
     /// <summary>
