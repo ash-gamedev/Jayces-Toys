@@ -24,6 +24,7 @@ public class IntroScene : MonoBehaviour
         foreach (var colourBlock in colourBlocks)
         {
             colourBlock.transform.DOScale(1f, fadeTime).SetEase(Ease.OutBounce);
+            AudioManager.instance?.PlaySoundEffect(EnumSoundName.PopSound);
             yield return new WaitForSeconds(0.25f);
         }
 

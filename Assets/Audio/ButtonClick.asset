@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28befaca1118d2d4284d29009394fe6d, type: 3}
-  m_Name: Victory
+  m_Name: ButtonClick
   m_EditorClassIdentifier: 
-  soundName: 6
-  clip: {fileID: 8300000, guid: 5bf8d8a2a82508348b9a8c0343ca9ffd, type: 3}
+  soundName: 13
+  clip: {fileID: 8300000, guid: cb318673b7e9822469553ef459c450bd, type: 3}
   volume: 1
   pitch: 1
   loop: 0

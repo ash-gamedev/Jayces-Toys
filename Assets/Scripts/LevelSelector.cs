@@ -65,11 +65,14 @@ public class LevelSelector : MonoBehaviour
         // first, pause all sound effect
         AudioManager.instance?.PauseAllSoundEffects();
 
+        // play "click" sound effect when switching levels
+        AudioManager.instance?.PlaySoundEffect(EnumSoundName.LevelButtonClick);
+
         // fade out
         transitionPanel.SetActive(true);
         transitionPanelAnimator.Play("FadeOut");
 
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene(sceneName);
     }

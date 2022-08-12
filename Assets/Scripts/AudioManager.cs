@@ -31,10 +31,7 @@ public class AudioManager : MonoBehaviour
         InitializeAudioSources(soundEffects);
 
         pausedSoundEffects = new List<Sound>();
-    }
 
-    private void Start()
-    {
         // update start volume values to 50% to start
         float startVolume = 0.5f;
         instance?.UpdateMusicVolume(startVolume);
