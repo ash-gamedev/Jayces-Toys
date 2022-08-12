@@ -13,10 +13,12 @@ public class SpellingLetterBlockGame : Game
     [SerializeField] List<GameObject> placeholderLetterBlockPrefabs;
 
     // public fields
-    public List<string> words;
+    public List<AudioClip> words;
     public string currentWord;
+    public AudioClip currentWordSound;
 
     System.Random random;
+    Vector3 cameraPos => Camera.main.transform.position;
 
     DragController dragController;
 
@@ -28,10 +30,7 @@ public class SpellingLetterBlockGame : Game
         random = new System.Random();
         dragController = FindObjectOfType<DragController>();
 
-        words = new List<string>
-        {
-            "Count", "Start", "Light", "Dog", "Cat", "Drive", "Frog"
-        };
+        words = WordSoundsDatabase.Sounds.Where(x => x.name.Count() <= 6).ToList();
 
         OnPrepareLevel();
     }
@@ -52,6 +51,14 @@ public class SpellingLetterBlockGame : Game
         dragController.OnUpdate();
     }
 
+    public override void OnLevelComplete()
+    {
+        base.OnLevelComplete();
+
+        // play sound for word
+        StartCoroutine(PlayWord(currentWordSound));
+    }
+
     public override bool IsLevelComplete()
     {
         return dragController?.AllTargetsReached() == true;
@@ -60,14 +67,22 @@ public class SpellingLetterBlockGame : Game
 
     #region Game functions
 
+    IEnumerator PlayWord(AudioClip word)
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        AudioSource.PlayClipAtPoint(word, cameraPos, 1f);
+    }
+
     public void SelectNextWord()
     {
         // get random word
         int index = random.Next(words.Count);
-        currentWord = words[index];
+        currentWordSound = words[index];
+        currentWord = currentWordSound.name;
 
         // remove word from list (so it doesn't get selected again)
-        words.Remove(currentWord);
+        words.Remove(currentWordSound);
 
         // instantiate letter blocks for word
         InstantiateLetterBlocks();
@@ -82,14 +97,14 @@ public class SpellingLetterBlockGame : Game
             GameObject.Destroy(child.gameObject);
 
         // get x positions
-        List<int> xPositions = GetXPositionIndexes();
-        List<int> xPositionsShuffled = Shuffle(xPositions);
+        List<float> xPositions = GetXPositionIndexes();
+        List<float> xPositionsShuffled = Shuffle(xPositions);
 
         // create letter block for each letter
         for (int i = 0; i < currentWord.Length; i++)
         {
             // instantiate letter block
-            int xPositionShuffled = xPositionsShuffled[i];
+            float xPositionShuffled = xPositionsShuffled[i];
             GameObject letterBlockPrefab = letterBlockPrefabs[i];
             GameObject letterBlockInstance = Instantiate(letterBlockPrefab, letterBlocksGroup);
             letterBlockInstance.transform.position += new Vector3(xPositionShuffled, 0, 0);
@@ -101,7 +116,7 @@ public class SpellingLetterBlockGame : Game
             letterBlock.GetComponent<Draggable>().StartPosition = letterBlock.transform.position;
 
             // instantiate letter block placeholder
-            int xPosition = xPositions[i];
+            float xPosition = xPositions[i];
             GameObject placeholderLetterBlockPrefab = placeholderLetterBlockPrefabs[i];
             GameObject placeholderLetterBlockInstance = Instantiate(placeholderLetterBlockPrefab, placeholderLetterBlocksGroup);
             placeholderLetterBlockInstance.transform.position += new Vector3(xPosition, 0, 0);
@@ -120,17 +135,19 @@ public class SpellingLetterBlockGame : Game
 
     #region Helper functions
 
-    private List<int> GetXPositionIndexes()
+    private List<float> GetXPositionIndexes()
     {
-        List<int> xIndexes = new List<int>();
+        List<float> xIndexes = new List<float>();
 
-        int xPosition = 0;
+        float xPosition = 0;
         if (currentWord.Length == 3)
             xPosition = -3;
         else if (currentWord.Length == 4)
-            xPosition = -4;
-        else
+            xPosition = -4.5f;
+        else if (currentWord.Length == 5)
             xPosition = -6;
+        else // 6
+            xPosition = -7.5f;
 
         xIndexes.Add(xPosition);
 
@@ -143,15 +160,15 @@ public class SpellingLetterBlockGame : Game
         return xIndexes;
     }
 
-    private List<int> Shuffle(List<int> list)
+    private List<float> Shuffle(List<float> list)
     {
-        List<int> listCopy = new List<int>(list);
+        List<float> listCopy = new List<float>(list);
         int n = listCopy.Count;
         while (n > 1)
         {
             n--;
             int k = random.Next(n + 1);
-            int value = listCopy[k];
+            float value = listCopy[k];
             listCopy[k] = listCopy[n];
             listCopy[n] = value;
         }
