@@ -55,7 +55,7 @@ public class LevelSelector : MonoBehaviour
     IEnumerator FadeInAndDisablePanel()
     {
         // fade in playes automatically, wait for it to finish
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.45f);
 
         transitionPanel.SetActive(false);
     }
