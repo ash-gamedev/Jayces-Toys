@@ -21,7 +21,9 @@ public enum EnumSoundName
     CardMismatch,
     JigglingParts,
     LevelButtonClick,
-    PopSound
+    PopSound,
+    YaySound,
+    ApplauseSound
 }
 
 public enum EnumGameState

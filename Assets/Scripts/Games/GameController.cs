@@ -36,11 +36,35 @@ public class GameController : MonoBehaviour
     {
         if(levelFinishedPanel.active == false)
         {
-            // show menu
-            levelFinishedPanel.SetActive(true);
-
-            // hide back button
-            backButton.SetActive(false);
+            StartCoroutine(ShowGameCompleteMenuAndReturnToMainMenu());
         }
+    }
+
+    IEnumerator ShowGameCompleteMenuAndReturnToMainMenu()
+    {
+        // show menu
+        levelFinishedPanel.SetActive(true);
+
+        // hide back button
+        backButton.SetActive(false);
+
+        // lower volume
+        AudioManager.instance?.FadeMusicVolume(0.3f, EnumSoundName.MainTheme);
+
+        yield return new WaitForSeconds(0.5f);
+
+        AudioManager.instance?.PlaySoundEffect(EnumSoundName.ApplauseSound);
+
+        yield return new WaitForSeconds(2f);
+
+        AudioManager.instance?.PlaySoundEffect(EnumSoundName.YaySound);
+
+        yield return new WaitForSeconds(3f);
+
+        AudioManager.instance?.FadeMusicVolume(1f, EnumSoundName.MainTheme);
+
+        yield return new WaitForSeconds(1f);
+
+        FindObjectOfType<LevelSelector>().LoadLevelSelectorScene();
     }
 }

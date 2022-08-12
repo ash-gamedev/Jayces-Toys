@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28befaca1118d2d4284d29009394fe6d, type: 3}
-  m_Name: MainTheme
+  m_Name: Applause
   m_EditorClassIdentifier: 
-  soundName: 0
-  clip: {fileID: 8300000, guid: c9e8fd08e03d837498612b068f0bafca, type: 3}
-  volume: 0.4
+  soundName: 16
+  clip: {fileID: 8300000, guid: 1520d0cc5d15a4848ae32f95e2f1f491, type: 3}
+  volume: 0.7
   pitch: 1
-  loop: 1
+  loop: 0
   source: {fileID: 0}

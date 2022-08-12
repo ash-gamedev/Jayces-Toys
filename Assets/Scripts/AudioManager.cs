@@ -130,6 +130,21 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Used to fade sound from current volume to new volume
+    /// </summary>
+    /// <param name="volume"></param>
+    /// <param name="soundName"></param>
+    public void FadeMusicVolume(float volume, EnumSoundName soundName)
+    {
+        // find the new track
+        Sound musicTrack = musicTracks.FirstOrDefault(s => s.soundName == soundName);
+
+        float newVolume = musicTrack.volume * volume * musicVolume;
+
+        StartCoroutine(FadeToNewVolume(musicTrack.source, newVolume));
+    }
+
+    /// <summary>
     /// Used to stop a sound effect currently playing.
     /// </summary>
     /// <param name="soundName"></param>
@@ -143,6 +158,20 @@ public class AudioManager : MonoBehaviour
         else
         {
             Debug.Log($"{soundName.ToString()} Sound doesn't exist in AudioManager list of sounds");
+        }
+    }
+
+    /// <summary>
+    /// Used to stop all sound effects playing
+    /// </summary>
+    public void StopAllSoundEffects()
+    {
+        foreach (Sound soundEffect in soundEffects)
+        {
+            if (soundEffect.source.isPlaying == true)
+            {
+                soundEffect.source.Stop();
+            }
         }
     }
 
@@ -291,6 +320,27 @@ public class AudioManager : MonoBehaviour
         UpdateVolume(musicVolume, musicTracks);
 
         newSound.Play();
+    }
+
+    private IEnumerator FadeToNewVolume(AudioSource audioSrc, float newVolume)
+    {
+        float speed = 0.01f;
+        if (audioSrc.volume > newVolume)
+        {
+            while (audioSrc.volume > newVolume)
+            {
+                audioSrc.volume -= speed;
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+        else
+        {
+            while (audioSrc.volume < newVolume)
+            {
+                audioSrc.volume += speed;
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
     }
     #endregion
 }
