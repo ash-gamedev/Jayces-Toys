@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CardMatch
   m_EditorClassIdentifier: 
   soundName: 10
-  clip: {fileID: 8300000, guid: dbbc9fe3a567d5447810399133d77229, type: 3}
+  clip: {fileID: 8300000, guid: b1f4bab32a5e8e8499fbeca844f0ca8b, type: 3}
   volume: 1
   pitch: 1
   loop: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Victory
   m_EditorClassIdentifier: 
   soundName: 6
-  clip: {fileID: 8300000, guid: 5bf8d8a2a82508348b9a8c0343ca9ffd, type: 3}
+  clip: {fileID: 8300000, guid: 5213ad6896371ad4487d342b0f9ed125, type: 3}
   volume: 1
   pitch: 1
   loop: 0
