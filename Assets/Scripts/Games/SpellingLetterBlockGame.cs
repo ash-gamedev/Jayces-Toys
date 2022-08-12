@@ -114,6 +114,9 @@ public class SpellingLetterBlockGame : Game
             LetterBlock letterBlock = letterBlockInstance.GetComponent<LetterBlock>();
             letterBlock.SetLetter(letter);
             letterBlock.GetComponent<Draggable>().StartPosition = letterBlock.transform.position;
+            // sort order
+            letterBlock.GetComponent<SpriteRenderer>().sortingOrder = 1 + i;
+            letterBlock.GetComponentInChildren<MeshRenderer>().sortingOrder = 1 + i;
 
             // instantiate letter block placeholder
             float xPosition = xPositions[i];

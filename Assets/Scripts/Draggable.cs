@@ -10,7 +10,9 @@ public class Draggable : MonoBehaviour
     {
         get
         {
-            return Vector2.Distance(StartPosition, transform.position) > .5f || (dragTarget != null && Vector2.Distance(dragTarget.transform.position, transform.position) > .5f);
+            bool movingToStart = (movementDestination == null && Vector2.Distance(StartPosition, transform.position) > .15f);
+            bool movingToTarget = (movementDestination != null && dragTarget != null && Vector2.Distance(dragTarget.transform.position, transform.position) > .15f);
+            return movingToStart || movingToTarget;
         }
     } 
     public SpriteRenderer SpriteRenderer

@@ -112,6 +112,7 @@ public class DragController : MonoBehaviour
         {
             if (!isDragging)
                 yield return new WaitUntil(() => dragged?.IsMoving == false || dragged == null);
+            
 
             dragged.SpriteRenderer.sortingOrder = isDragging ? Layer.Dragging : Layer.Default;
             MeshRenderer meshRenderer = dragged.GetComponentInChildren<MeshRenderer>();
