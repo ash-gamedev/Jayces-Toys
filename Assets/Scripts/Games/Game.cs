@@ -10,7 +10,7 @@ public class Game : MonoBehaviour, IGame
     }
     private EnumGameState gameState;
 
-    public int levelsCompleted = 0;
+    [HideInInspector] public int levelsCompleted = 0;
 
     public virtual void OnPrepareGame()
     {

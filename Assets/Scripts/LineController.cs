@@ -6,7 +6,7 @@ public class LineController : MonoBehaviour
 {
 
     private LineRenderer lr;
-    private Transform[] points;
+    private List<Transform> points;
 
     private void Awake()
     {
@@ -16,17 +16,20 @@ public class LineController : MonoBehaviour
     public void SetUpLine(List<Transform> points)
     {
         lr.positionCount = points.Count;
-        this.points = points.ToArray();
+        this.points = points;
+    }
 
-        foreach(Transform point in points)
-            Debug.Log(point.position);
+    public void RemoveLine()
+    {
+        this.points.Clear();
+        lr.positionCount = 0;
     }
 
     private void Update()
     {
         if(points != null)
         {
-            for (int i = 0; i < points?.Length; i++)
+            for (int i = 0; i < points?.Count; i++)
             {
                 lr.SetPosition(i, points[i].position);
             }
