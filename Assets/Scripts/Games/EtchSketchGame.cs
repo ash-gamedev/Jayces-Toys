@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,7 +92,8 @@ public class EtchSketchGame : Game
 
     public override bool IsLevelComplete()
     {
-        return lineIndex == currentShape?.Points.Count;
+        // count how many lines have been drawn
+        return currentShape.LinesDrawn.Count() == currentShape?.Points.Count;
     }
     #endregion
 
@@ -126,11 +128,6 @@ public class EtchSketchGame : Game
             currentShape.LinesDrawn.Add(line);
 
             lineIndex++;
-
-            if (IsLevelComplete())
-            {
-                currentShape.ShowShape(true);
-            }
         }
         else
         {
@@ -155,27 +152,18 @@ public class EtchSketchGame : Game
 
     public void SelectNextShape()
     {
-        // remove previous shape 
-        if(currentShape != null)
-            Destroy(currentShape.gameObject);
-
-        // remove previous lines
+        ClearPreviousShapeLines();
         lineIndex = 0;
-        if (lines != null)
-        {
-            for (int i = lines.Count - 1; i >= 0; i--)
-            {
-                lines[i].RemoveLine();
-                Destroy(lines[0].gameObject);
-            }
-        }
+
+        // remove previous shape 
+        if (currentShape != null)
+            Destroy(currentShape.gameObject);
         
         // get random shape
         int index = random.Next(shapes.Count);
         currentShape = Instantiate(shapes[index]).GetComponent<Shape>();
 
         // add points (+ add start point to end (to complete the shapes))
-        currentShapeDottedLinePoints.Clear();
         currentShapeDottedLinePoints.AddRange(currentShape.TransformPoints);
         currentShapeDottedLinePoints.Add(currentShapeDottedLinePoints[0]);
 
@@ -189,6 +177,50 @@ public class EtchSketchGame : Game
         InstantiateLineControllers();
     }
 
+    public void ClearPreviousShapeLines()
+    {
+        dottedLine?.RemoveLine();
+        currentShapeDottedLinePoints?.Clear();
+
+        // remove lines & points
+        if (lines != null)
+        {
+            // remove lines
+            for (int i = lines.Count - 1; i >= 0; i--)
+            {
+                lines[i].RemoveLine();
+                Destroy(lines[i].gameObject);
+            }
+
+            // remove transforms
+            for (int i = currentShape.TransformPoints.Count - 1; i >= 0; i--)
+            {
+                Destroy(currentShape.TransformPoints[i].gameObject);
+            }
+        }
+    }
+
+    public void FadeShapeLines()
+    {
+        float fadeOut = 1f;
+
+        // remove lines & points
+        if (lines != null)
+        {
+            // remove lines
+            for (int i = lines.Count - 1; i >= 0; i--)
+            {
+                lines[i].lr.material.DOFade(0f, fadeOut);
+            }
+
+            // remove transforms
+            for (int i = currentShape.TransformPoints.Count - 1; i >= 0; i--)
+            {
+                currentShape.TransformPoints[i].GetComponent<SpriteRenderer>().material.DOFade(0f, fadeOut);
+            }
+        }
+    }
+
     public void InstantiateDottedLine()
     {
         dottedLine.SetUpLine(currentShapeDottedLinePoints);
@@ -198,9 +230,23 @@ public class EtchSketchGame : Game
     {
         lines = new List<LineController>();
         foreach(Transform point in currentShape.TransformPoints)
-        {
+        { 
             GameObject lineInstance = Instantiate(LinePrefab);
             lines.Add(lineInstance.GetComponent<LineController>());
         }
+    }
+
+    public override IEnumerator WaitAndPrepareNextLevel()
+    {
+        FadeShapeLines();
+        currentShape.ShowShape(true);
+
+        yield return new WaitForSeconds(3f);
+
+        // check if 3 levels were completed to end game
+        if (levelsCompleted == 3)
+            OnGameComplete();
+        else
+            OnPrepareLevel();
     }
 }

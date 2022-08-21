@@ -5,7 +5,7 @@ using UnityEngine;
 public class LineController : MonoBehaviour
 {
 
-    private LineRenderer lr;
+    public LineRenderer lr;
     private List<Transform> points;
 
     private void Awake()
@@ -21,7 +21,7 @@ public class LineController : MonoBehaviour
 
     public void RemoveLine()
     {
-        this.points.Clear();
+        this.points?.Clear();
         lr.positionCount = 0;
     }
 

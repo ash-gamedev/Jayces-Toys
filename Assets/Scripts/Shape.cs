@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using DG.Tweening;
 
 public class Shape : MonoBehaviour
 {
@@ -14,15 +15,13 @@ public class Shape : MonoBehaviour
     void Awake()
     {
         // get points
-        TransformPoints = GetComponentsInChildren<Transform>().ToList();
-        // remove first point (center/parent)
-        TransformPoints.RemoveAt(0);
+        TransformPoints = GetComponentsInChildren<Transform>().Where(x => x.gameObject.CompareTag("Point")).ToList();
         Points = new List<Vector3>();
         foreach (Transform transform in TransformPoints)
             Points.Add(transform.position);
 
         // get sprite renderer
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentsInChildren<SpriteRenderer>().Where(x => !x.gameObject.CompareTag("Point")).FirstOrDefault();
         // hide shape sprite
         ShowShape(false);
 
@@ -33,10 +32,18 @@ public class Shape : MonoBehaviour
     // Show shape 
     public void ShowShape(bool showShape)
     {
-        float transparency = showShape ? 1 : 0;
+        Debug.Log(spriteRenderer.gameObject.name);
+        spriteRenderer.gameObject.transform.DOScale(0, 0);
 
-        // todo: add animatuin
-        spriteRenderer.color = new Color(1, 1, 1, transparency);
+        if (showShape)
+        {
+            // animation scale up
+            Sequence mySequence = DOTween.Sequence();
+            mySequence.Append(spriteRenderer.gameObject.transform.DOScale(0.85f, 0));
+            mySequence.Append(spriteRenderer.gameObject.transform.DOScale(1.1f, 0.85f));
+            mySequence.PrependInterval(0.25f);
+            mySequence.Append(spriteRenderer.gameObject.transform.DOScale(1.05f, 0.4f));
+        }
     }
 
     // Get neighbour points
@@ -81,8 +88,8 @@ public class Shape : MonoBehaviour
         else if (index2 == 0 && index1 == Points.Count - 1)
             areNeighbours = true;
 
-        Debug.Log(point1.position + " " + point2.position);
-        Debug.Log("Are neighbours: " + areNeighbours + " - Indexes: " + index1 + " " + index2);
+        //Debug.Log(point1.position + " " + point2.position);
+        //Debug.Log("Are neighbours: " + areNeighbours + " - Indexes: " + index1 + " " + index2);
 
         // otherwise not neighbours
         return areNeighbours;
