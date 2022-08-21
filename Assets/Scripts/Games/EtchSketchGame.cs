@@ -111,7 +111,7 @@ public class EtchSketchGame : Game
     void Drop()
     {
         // Get closes point
-        Transform closestPoint = currentShape.Points.Where(x => Mathf.Abs(Vector3.Distance(x.position, draggingPoint.transform.position)) < 1).FirstOrDefault();
+        Transform closestPoint = currentShape.TransformPoints.Where(x => Mathf.Abs(Vector3.Distance(x.position, draggingPoint.transform.position)) < 1.5).FirstOrDefault();
 
         if(closestPoint != null && currentShape.AreNeighbours(closestPoint, startPoint.transform) && !currentShape.IsLine(closestPoint, startPoint.transform))
         {
@@ -122,7 +122,7 @@ public class EtchSketchGame : Game
             draggingPoint.transform.position = closestPoint.transform.position;
 
             // add line
-            Tuple<Transform, Transform> line = new Tuple<Transform, Transform>(startPoint.transform, closestPoint);
+            Tuple<Vector3, Vector3> line = new Tuple<Vector3, Vector3>(startPoint.transform.position, closestPoint.position);
             currentShape.LinesDrawn.Add(line);
 
             lineIndex++;
@@ -176,7 +176,7 @@ public class EtchSketchGame : Game
 
         // add points (+ add start point to end (to complete the shapes))
         currentShapeDottedLinePoints.Clear();
-        currentShapeDottedLinePoints.AddRange(currentShape.Points);
+        currentShapeDottedLinePoints.AddRange(currentShape.TransformPoints);
         currentShapeDottedLinePoints.Add(currentShapeDottedLinePoints[0]);
 
         // remove from list (so it doesn't get selected again)
@@ -197,7 +197,7 @@ public class EtchSketchGame : Game
     public void InstantiateLineControllers()
     {
         lines = new List<LineController>();
-        foreach(Transform point in currentShape.Points)
+        foreach(Transform point in currentShape.TransformPoints)
         {
             GameObject lineInstance = Instantiate(LinePrefab);
             lines.Add(lineInstance.GetComponent<LineController>());

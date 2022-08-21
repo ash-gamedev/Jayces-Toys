@@ -6,23 +6,27 @@ using System;
 
 public class Shape : MonoBehaviour
 {
-    [HideInInspector] public List<Transform> Points;
-    [HideInInspector] public List<Tuple<Transform, Transform>> LinesDrawn;
+    [HideInInspector] public List<Vector3> Points;
+    [HideInInspector] public List<Transform> TransformPoints;
+    [HideInInspector] public List<Tuple<Vector3, Vector3>> LinesDrawn;
     SpriteRenderer spriteRenderer;
 
     void Awake()
     {
         // get points
-        Points = GetComponentsInChildren<Transform>().ToList();
+        TransformPoints = GetComponentsInChildren<Transform>().ToList();
         // remove first point (center/parent)
-        Points.RemoveAt(0);
+        TransformPoints.RemoveAt(0);
+        Points = new List<Vector3>();
+        foreach (Transform transform in TransformPoints)
+            Points.Add(transform.position);
 
         // get sprite renderer
         spriteRenderer = GetComponent<SpriteRenderer>();
         // hide shape sprite
         ShowShape(false);
 
-        LinesDrawn = new List<Tuple<Transform, Transform>>();
+        LinesDrawn = new List<Tuple<Vector3, Vector3>>();
     }
 
     #region public functions
@@ -38,7 +42,7 @@ public class Shape : MonoBehaviour
     // Get neighbour points
     public List<Transform> GetNeighbours(Transform point)
     {
-        int index = Points.IndexOf(point);
+        int index = Points.IndexOf(point.position);
 
         // get neighbour indexes
         int neighbourIndex1 = index + 1;
@@ -52,8 +56,8 @@ public class Shape : MonoBehaviour
 
         // get neighbour transforms
         List<Transform> neighbourPoints = new List<Transform>();
-        neighbourPoints.Add(Points[neighbourIndex1]);
-        neighbourPoints.Add(Points[neighbourIndex2]);
+        neighbourPoints.Add(TransformPoints[neighbourIndex1]);
+        neighbourPoints.Add(TransformPoints[neighbourIndex2]);
 
         return neighbourPoints;
     }
@@ -64,8 +68,8 @@ public class Shape : MonoBehaviour
         bool areNeighbours = false;
 
         // get index
-        int index1 = Points.IndexOf(point1);
-        int index2 = Points.IndexOf(point2);
+        int index1 = Points.IndexOf(point1.position);
+        int index2 = Points.IndexOf(point2.position);
 
         // if indexes are beside each other
         if (index1 + 1 == index2 || index1 - 1 == index2)
@@ -87,8 +91,8 @@ public class Shape : MonoBehaviour
     // Check if there's a line between two points
     public bool IsLine(Transform point1, Transform point2)
     {
-        Tuple<Transform, Transform> points1 = new Tuple<Transform, Transform>(point1, point2);
-        Tuple<Transform, Transform> points2 = new Tuple<Transform, Transform>(point2, point1);
+        Tuple<Vector3, Vector3> points1 = new Tuple<Vector3, Vector3>(point1.position, point2.position);
+        Tuple<Vector3, Vector3> points2 = new Tuple<Vector3, Vector3>(point2.position, point1.position);
 
         if (LinesDrawn.Contains(points1) || LinesDrawn.Contains(points2))
             return true;
@@ -100,9 +104,9 @@ public class Shape : MonoBehaviour
     public bool IsPointFullyConnected(Transform point)
     {
         int countOfLines = 0;
-        foreach (Tuple<Transform, Transform> line in LinesDrawn)
+        foreach (Tuple<Vector3, Vector3> line in LinesDrawn)
         {
-            if (line.Item1 == point || line.Item2 == point)
+            if (line.Item1 == point.position || line.Item2 == point.position)
                 countOfLines++;
         }
 
