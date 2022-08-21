@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
         pausedSoundEffects = new List<Sound>();
 
         // update start volume values to 75% to start
-        float startVolume = 0.75f;
+        float startVolume = 0.8f;
         instance?.UpdateMusicVolume(startVolume);
         instance?.UpdateSoundEffectVolume(startVolume, playSoundEffect: false);
 

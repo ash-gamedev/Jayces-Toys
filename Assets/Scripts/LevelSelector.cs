@@ -16,9 +16,9 @@ public class LevelSelector : MonoBehaviour
         StartCoroutine(FadeInAndDisablePanel());
     }
 
-    public void LoadLevelSelectorScene()
+    public void LoadLevelSelectorScene(bool playSoundEffect = true)
     {
-        LoadScene("LevelSelection");
+        LoadScene("LevelSelection", playSoundEffect);
     }
 
     public void LoadPotatoeHeadScene()
@@ -47,9 +47,9 @@ public class LevelSelector : MonoBehaviour
         SceneManager.LoadScene(buildIndex);
     }
 
-    public void LoadScene(string sceneName)
+    public void LoadScene(string sceneName, bool playSoundEffect = true)
     {
-        StartCoroutine(FadeOutAndLoadScene(sceneName));
+        StartCoroutine(FadeOutAndLoadScene(sceneName, playSoundEffect));
     }
 
     IEnumerator FadeInAndDisablePanel()
@@ -60,13 +60,14 @@ public class LevelSelector : MonoBehaviour
         transitionPanel.SetActive(false);
     }
 
-    IEnumerator FadeOutAndLoadScene(string sceneName)
+    IEnumerator FadeOutAndLoadScene(string sceneName, bool playSoundEffect = true)
     {
         // first, pause all sound effect
         AudioManager.instance?.StopAllSoundEffects();
 
         // play "click" sound effect when switching levels
-        AudioManager.instance?.PlaySoundEffect(EnumSoundName.LevelButtonClick);
+        if (playSoundEffect)
+            AudioManager.instance?.PlaySoundEffect(EnumSoundName.LevelButtonClick);
 
         // fade out
         transitionPanel.SetActive(true);

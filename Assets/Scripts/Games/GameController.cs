@@ -65,6 +65,6 @@ public class GameController : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        FindObjectOfType<LevelSelector>().LoadLevelSelectorScene();
+        FindObjectOfType<LevelSelector>().LoadLevelSelectorScene(false);
     }
 }

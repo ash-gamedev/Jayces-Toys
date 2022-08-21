@@ -71,7 +71,7 @@ public class SpellingLetterBlockGame : Game
     {
         yield return new WaitForSeconds(0.3f);
 
-        AudioSource.PlayClipAtPoint(word, cameraPos, 1f);
+        AudioSource.PlayClipAtPoint(word, cameraPos, 5f);
     }
 
     public void SelectNextWord()

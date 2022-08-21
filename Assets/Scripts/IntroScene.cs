@@ -33,5 +33,9 @@ public class IntroScene : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         AudioManager.instance?.PlayMusicTrack(EnumSoundName.MainTheme);
+
+        yield return new WaitForSeconds(2f);
+
+        FindObjectOfType<LevelSelector>().LoadLevelSelectorScene(false);
     }
 }
