@@ -29,18 +29,28 @@ public class Shape : MonoBehaviour
     }
 
     #region public functions
-    // Show shape 
-    public void ShowShape(bool showShape)
+    // Set shape colour
+    public void SetShapeColor()
     {
-        Debug.Log(spriteRenderer.gameObject.name);
-        spriteRenderer.gameObject.transform.DOScale(0, 0);
+
+    }
+
+    // Show shape 
+    public void ShowShape(bool showShape, Color? setColor = null)
+    {
+        if (setColor == null)
+            setColor = new Color(1, 1, 1, 1);
+
+        Color color = (Color)setColor;
+        float transparency = showShape ? 1 : 0;
+        spriteRenderer.color = new Color(color.r, color.g, color.b, transparency);
 
         if (showShape)
         {
             // animation scale up
             Sequence mySequence = DOTween.Sequence();
-            mySequence.Append(spriteRenderer.gameObject.transform.DOScale(0.85f, 0));
-            mySequence.Append(spriteRenderer.gameObject.transform.DOScale(1.1f, 0.85f));
+            //mySequence.Append(spriteRenderer.gameObject.transform.DOScale(0.85f, 0));
+            mySequence.Append(spriteRenderer.gameObject.transform.DOScale(1.15f, 0.85f));
             mySequence.PrependInterval(0.25f);
             mySequence.Append(spriteRenderer.gameObject.transform.DOScale(1.05f, 0.4f));
         }

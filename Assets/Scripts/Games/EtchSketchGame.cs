@@ -12,6 +12,7 @@ public class EtchSketchGame : Game
     [SerializeField] private List<GameObject> shapes;
     [SerializeField] private LineController dottedLine;
     [SerializeField] private GameObject LinePrefab;
+    [SerializeField] private List<Color> colors;
 
     List<LineController> lines;
     LineController line => lines[lineIndex];
@@ -239,7 +240,7 @@ public class EtchSketchGame : Game
     public override IEnumerator WaitAndPrepareNextLevel()
     {
         FadeShapeLines();
-        currentShape.ShowShape(true);
+        currentShape.ShowShape(true, PickRandomColor());
 
         yield return new WaitForSeconds(3f);
 
@@ -248,5 +249,17 @@ public class EtchSketchGame : Game
             OnGameComplete();
         else
             OnPrepareLevel();
+    }
+
+    public Color PickRandomColor()
+    {
+        // get random shape
+        int index = random.Next(colors.Count);
+        Color color = colors[index];
+
+        // remove from list (so it doesn't get selected again)
+        colors.RemoveAt(index);
+
+        return color;
     }
 }
