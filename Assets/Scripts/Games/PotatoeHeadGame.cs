@@ -10,7 +10,7 @@ public class PotatoeHeadGame : Game
     DragController dragController;
 
     System.Random random;
-    int index = 0;
+    List<int> indexes;
 
     #region Game states
     public override void OnPrepareGame()
@@ -18,6 +18,7 @@ public class PotatoeHeadGame : Game
         base.OnPrepareGame();
 
         random = new System.Random();
+        indexes = new List<int> { 0, 1, 2 };
         dragController = FindObjectOfType<DragController>();
         potatoeHeadParts = FindObjectsOfType<PotatoeHeadPart>().ToList();
         draggableAnimations = FindObjectsOfType<DraggableAnimation>().ToList();
@@ -50,15 +51,20 @@ public class PotatoeHeadGame : Game
 
     public void SelectPotatoeHeadParts()
     {
+        // get index for potatoe head
+        int randomIndex = random.Next(indexes.Count);
+        int index = indexes[randomIndex];
+
+        // remove from list (to not get selected again)
+        indexes.Remove(index);
+
         // select new sprite & reset the positions
-        foreach(PotatoeHeadPart potatoeHeadPart in potatoeHeadParts)
+        foreach (PotatoeHeadPart potatoeHeadPart in potatoeHeadParts)
         {
             potatoeHeadPart.SetSpriteByIndex(index);
         }
 
         StartCoroutine(StartingPotatoeHeadAnimation());
-
-        index++;
     }
 
     IEnumerator StartingPotatoeHeadAnimation()
