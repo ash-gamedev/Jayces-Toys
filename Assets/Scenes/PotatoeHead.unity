@@ -430,6 +430,22 @@ PrefabInstance:
       propertyPath: dragTarget
       value: 
       objectReference: {fileID: 871675268}
+    - target: {fileID: 1259450684965647998, guid: d8b276299679fdd4d8211caea7fab592, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1681397935, guid: 2140e928565a9424081e2f83589b9fa6, type: 3}
+    - target: {fileID: 7214391767175484098, guid: d8b276299679fdd4d8211caea7fab592, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: -1681397935, guid: 2140e928565a9424081e2f83589b9fa6, type: 3}
+    - target: {fileID: 7214391767175484098, guid: d8b276299679fdd4d8211caea7fab592, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 64238917, guid: 2140e928565a9424081e2f83589b9fa6, type: 3}
+    - target: {fileID: 7214391767175484098, guid: d8b276299679fdd4d8211caea7fab592, type: 3}
+      propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: -1681397935, guid: 2140e928565a9424081e2f83589b9fa6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8b276299679fdd4d8211caea7fab592, type: 3}
 --- !u!4 &584836820 stripped
@@ -1817,10 +1833,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 817644845}
     m_Modifications:
+    - target: {fileID: 4977650055861939525, guid: 2cc6ffb5e3ccd814a9da917b7d72f158, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 274407774, guid: 2140e928565a9424081e2f83589b9fa6, type: 3}
+    - target: {fileID: 4977650055861939525, guid: 2cc6ffb5e3ccd814a9da917b7d72f158, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 656519450, guid: 2140e928565a9424081e2f83589b9fa6, type: 3}
+    - target: {fileID: 4977650055861939525, guid: 2cc6ffb5e3ccd814a9da917b7d72f158, type: 3}
+      propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 274407774, guid: 2140e928565a9424081e2f83589b9fa6, type: 3}
     - target: {fileID: 5021588545846151680, guid: 2cc6ffb5e3ccd814a9da917b7d72f158, type: 3}
       propertyPath: m_Name
       value: Left Ear
       objectReference: {fileID: 0}
+    - target: {fileID: 5021588545846151931, guid: 2cc6ffb5e3ccd814a9da917b7d72f158, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 274407774, guid: 2140e928565a9424081e2f83589b9fa6, type: 3}
     - target: {fileID: 5021588545846151932, guid: 2cc6ffb5e3ccd814a9da917b7d72f158, type: 3}
       propertyPath: dragTarget
       value: 
