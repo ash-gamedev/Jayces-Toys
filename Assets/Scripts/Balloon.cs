@@ -7,7 +7,9 @@ public class Balloon : MonoBehaviour
 {
     [SerializeField] private List<Color> colors;
     [SerializeField] private float balloonSpeed = 20f;
+    [SerializeField] private ParticleSystem confettiParticles;
 
+    Animator animator;
     Image image;
     BalloonGenerator bl;
 
@@ -19,6 +21,7 @@ public class Balloon : MonoBehaviour
     {
         bl = FindObjectOfType<BalloonGenerator>();
         image = GetComponent<Image>();
+        animator = GetComponent<Animator>();
         // get random color
         random = new System.Random();
         int index = random.Next(colors.Count);
@@ -40,22 +43,15 @@ public class Balloon : MonoBehaviour
         int index = random.Next(bl.balloonPopSounds.Count);
         AudioSource.PlayClipAtPoint(bl.balloonPopSounds[index], Camera.main.transform.position, 0.5f);
 
-        StartCoroutine(ShowAnim());
+        StartCoroutine(PlayAnim());
         Destroy(gameObject, 0.8f);
     }
 
-    IEnumerator ShowAnim()
+    IEnumerator PlayAnim()
     {
-        //image.sprite = bl.destrSp[spriteNumber];
-        //spriteNumber++;
-        //if (spriteNumber == bl.destrSp.Length)
-        //{
-        //    image.enabled = false;
-        //    yield break;
-        //}
+        animator.Play("Pop");
         yield return new WaitForSeconds(0.1f);
-        image.sprite = bl.destrSp[0];
-        //StartCoroutine(ShowAnim());
-        //yield return null;
+        confettiParticles.gameObject.transform.parent = null;
+        confettiParticles.Play();
     }
 }
