@@ -51,17 +51,23 @@ public class SpellingLetterBlockGame : Game
         dragController.OnUpdate();
     }
 
-    public override void OnLevelComplete()
-    {
-        base.OnLevelComplete();
-
-        // play sound for word
-        StartCoroutine(PlayWord(currentWordSound));
-    }
-
     public override bool IsLevelComplete()
     {
         return dragController?.AllTargetsReached() == true;
+    }
+
+    public override IEnumerator WaitAndPrepareNextLevel()
+    {
+        // play sound for word
+        StartCoroutine(PlayWord(currentWordSound));
+
+        yield return new WaitForSeconds(3f);
+
+        // check if 3 levels were completed to end game
+        if (levelsCompleted == 3)
+            OnGameComplete();
+        else
+            OnPrepareLevel();
     }
     #endregion
 
@@ -69,9 +75,17 @@ public class SpellingLetterBlockGame : Game
 
     IEnumerator PlayWord(AudioClip word)
     {
-        yield return new WaitForSeconds(0.3f);
+        // lower music volume
+        AudioManager.instance?.FadeMusicVolume(0.3f, EnumSoundName.MainTheme);
 
-        AudioSource.PlayClipAtPoint(word, cameraPos, 5f);
+        yield return new WaitForSeconds(1f);
+
+        AudioSource.PlayClipAtPoint(word, cameraPos, 1f);
+
+        yield return new WaitForSeconds(1.3f);
+
+        // raise music volume
+        AudioManager.instance?.FadeMusicVolume(1f, EnumSoundName.MainTheme);
     }
 
     public void SelectNextWord()

@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
         pausedSoundEffects = new List<Sound>();
 
         // update start volume values to 75% to start
-        float startVolume = 0.8f;
+        float startVolume = 1f;
         instance?.UpdateMusicVolume(startVolume);
         instance?.UpdateSoundEffectVolume(startVolume, playSoundEffect: false);
 
@@ -324,7 +324,7 @@ public class AudioManager : MonoBehaviour
 
     private IEnumerator FadeToNewVolume(AudioSource audioSrc, float newVolume)
     {
-        float speed = 0.01f;
+        float speed = 0.05f;
         if (audioSrc.volume > newVolume)
         {
             while (audioSrc.volume > newVolume)
