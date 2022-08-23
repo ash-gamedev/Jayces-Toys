@@ -185,10 +185,12 @@ public class EtchSketchGame : Game
 
         foreach (var point in currentShape.TransformPoints)
         {
+            yield return new WaitForSeconds(0.35f);
             point.transform.DOScale(1f, 1f).SetEase(Ease.OutBounce);
             AudioManager.instance?.PlaySoundEffect(EnumSoundName.PopSound);
-            yield return new WaitForSeconds(0.35f);
         }
+
+        yield return new WaitForSeconds(0.35f);
 
         yield return InstantiateDottedLine();
 
@@ -221,7 +223,7 @@ public class EtchSketchGame : Game
 
     public void FadeShapeLines()
     {
-        float fadeOut = 1f;
+        float fadeOut = 0.5f;
 
         // remove lines & points
         if (lines != null)
@@ -238,15 +240,21 @@ public class EtchSketchGame : Game
                 currentShape.TransformPoints[i].GetComponent<SpriteRenderer>().material.DOFade(0f, fadeOut);
             }
         }
+
+        dottedLine?.RemoveLine();
     }
 
     public IEnumerator InstantiateDottedLine()
     {
-        foreach(Transform transform in currentShapeDottedLinePoints)
+        AudioManager.instance?.PlaySoundEffect(EnumSoundName.Drawing);
+
+        foreach (Transform transform in currentShapeDottedLinePoints)
         {
             dottedLine.AddLine(transform);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.35f);
         }
+
+        AudioManager.instance?.StopSoundEffect(EnumSoundName.Drawing);
     }
 
     public void InstantiateLineControllers()
@@ -261,12 +269,10 @@ public class EtchSketchGame : Game
 
     public override IEnumerator WaitAndPrepareNextLevel()
     {
-        yield return new WaitForSeconds(0.25f);
-
         FadeShapeLines();
         currentShape.ShowShape(true, PickRandomColor());
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3.5f);
 
         // check if 3 levels were completed to end game
         if (levelsCompleted == 3)

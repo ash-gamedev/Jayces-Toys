@@ -48,11 +48,14 @@ public class Shape : MonoBehaviour
         if (showShape)
         {
             // animation scale up
+            spriteRenderer.gameObject.transform.DOScale(1.10f, 0.6f);
+
             Sequence mySequence = DOTween.Sequence();
-            //mySequence.Append(spriteRenderer.gameObject.transform.DOScale(0.85f, 0));
-            mySequence.Append(spriteRenderer.gameObject.transform.DOScale(1.15f, 0.85f));
-            mySequence.PrependInterval(0.25f);
-            mySequence.Append(spriteRenderer.gameObject.transform.DOScale(1.05f, 0.4f));
+            mySequence.Append(spriteRenderer.gameObject.transform.DOScale(1.00f, 0.4f));
+            mySequence.PrependInterval(2f);
+            mySequence.Append(spriteRenderer.gameObject.transform.DORotate(new Vector3(0, 0, 360), 1f, RotateMode.Fast));
+            mySequence.Join(spriteRenderer.material.DOFade(0, 1f));
+            mySequence.Join(spriteRenderer.gameObject.transform.DOScale(0, 1f));
         }
     }
 
