@@ -45,9 +45,6 @@ public class EtchSketchGame : Game
 
         // select shape
         SelectNextShape();
-
-        // play level
-        OnPlayLevel();
     }
 
     public override void OnPlayLevel()
@@ -171,11 +168,32 @@ public class EtchSketchGame : Game
         // remove from list (so it doesn't get selected again)
         shapes.RemoveAt(index);
 
-        // instantiate dotted line for shape
-        InstantiateDottedLine();
-
         // set up line controllers for lines
         InstantiateLineControllers();
+
+        StartCoroutine(InstantiatePointsAndLines());
+    }
+
+    private IEnumerator InstantiatePointsAndLines()
+    {
+        foreach (var point in currentShape.TransformPoints)
+        {
+            point.transform.localScale = Vector3.zero;
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        foreach (var point in currentShape.TransformPoints)
+        {
+            point.transform.DOScale(1f, 1f).SetEase(Ease.OutBounce);
+            AudioManager.instance?.PlaySoundEffect(EnumSoundName.PopSound);
+            yield return new WaitForSeconds(0.35f);
+        }
+
+        yield return InstantiateDottedLine();
+
+        // play level
+        OnPlayLevel();
     }
 
     public void ClearPreviousShapeLines()
@@ -222,9 +240,13 @@ public class EtchSketchGame : Game
         }
     }
 
-    public void InstantiateDottedLine()
+    public IEnumerator InstantiateDottedLine()
     {
-        dottedLine.SetUpLine(currentShapeDottedLinePoints);
+        foreach(Transform transform in currentShapeDottedLinePoints)
+        {
+            dottedLine.AddLine(transform);
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     public void InstantiateLineControllers()
@@ -239,10 +261,12 @@ public class EtchSketchGame : Game
 
     public override IEnumerator WaitAndPrepareNextLevel()
     {
+        yield return new WaitForSeconds(0.25f);
+
         FadeShapeLines();
         currentShape.ShowShape(true, PickRandomColor());
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.5f);
 
         // check if 3 levels were completed to end game
         if (levelsCompleted == 3)

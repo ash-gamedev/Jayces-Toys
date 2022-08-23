@@ -19,6 +19,14 @@ public class LineController : MonoBehaviour
         this.points = points;
     }
 
+    public void AddLine(Transform point)
+    {
+        if (this.points == null)
+            this.points = new List<Transform>();
+        this.points.Add(point);
+        lr.positionCount = points.Count;
+    }
+
     public void RemoveLine()
     {
         this.points?.Clear();
