@@ -54,6 +54,8 @@ public class HintHelper : MonoBehaviour
 
         // Instantiate gameObject
         instantiatedGameObject = Instantiate(FingerPointPrefab, startPosition, Quaternion.identity);
+        instantiatedGameObject.transform.localScale = Vector3.zero;
+        SpriteRenderer spriteRenderer = instantiatedGameObject.GetComponent<SpriteRenderer>();
 
         // Create a sequence
         Sequence mySequence = DOTween.Sequence();
@@ -70,7 +72,7 @@ public class HintHelper : MonoBehaviour
         mySequence.Append(instantiatedGameObject.transform.DOMove(targetPosition, 2f));
 
         // fade out
-        mySequence.Append(instantiatedGameObject.GetComponent<SpriteRenderer>().material.DOFade(0, 1.5f));
+        mySequence.Append(spriteRenderer.material.DOFade(0, 1.5f));
 
         Destroy(instantiatedGameObject, 8f);
     }

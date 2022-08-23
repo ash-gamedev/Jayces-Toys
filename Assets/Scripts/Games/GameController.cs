@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour
 
         AudioManager.instance?.FadeMusicVolume(1f, EnumSoundName.MainTheme);
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
 
         FindObjectOfType<LevelSelector>().LoadLevelSelectorScene(false);
     }
