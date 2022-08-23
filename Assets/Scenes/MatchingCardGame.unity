@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HintHelper
       objectReference: {fileID: 0}
+    - target: {fileID: 181041042345510627, guid: 65adbb1db6a36a54dbefef6983aed4fb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6319541132117016589, guid: 65adbb1db6a36a54dbefef6983aed4fb, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -395,6 +399,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1775319842655264208, guid: 5990f60996c07e744b011c737e640667, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1775319842655264211, guid: 5990f60996c07e744b011c737e640667, type: 3}
       propertyPath: m_Pivot.x
       value: 0

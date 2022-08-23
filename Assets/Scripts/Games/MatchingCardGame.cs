@@ -15,6 +15,7 @@ public class MatchingCardGame : Game
     int numberOfSetsMatched = 0;
 
     System.Random random;
+    HintHelper hintHelper;
 
     int[] numberOfSetsPerLevel;
 
@@ -27,6 +28,7 @@ public class MatchingCardGame : Game
         numberOfSetsPerLevel = new int[]{ 2, 3, 4 };
         SelectedCards = new List<Card>();
         gridLayoutGroup = cardParentTransform.GetComponent<GridLayoutGroup>();
+        hintHelper = FindObjectOfType<HintHelper>();
 
         OnPrepareLevel();
     }
@@ -43,6 +45,29 @@ public class MatchingCardGame : Game
     {
         // when there's no more cards
         return FindObjectsOfType<Card>().Where(x => x.isHidden == false).Count() == 0;
+    }
+
+    public override void OnShowHint()
+    {
+        List<Card> cards = FindObjectsOfType<Card>().ToList();
+
+
+        Debug.Log(cards.Count);
+
+        Card card1 = cards.Where(x => x.isHidden == false).FirstOrDefault();
+        cards.Remove(card1);
+
+        Debug.Log(cards.Count);
+
+        if(card1 != null)
+        {
+            Card card2 = cards.Where(x => x.Image.sprite.name == card1.Image.sprite.name).FirstOrDefault();
+
+            Debug.Log(card2);
+
+            if (card2 != null)
+                hintHelper.ClickAndClick(card1.transform.position, card2.transform.position);
+        }
     }
     #endregion
 
