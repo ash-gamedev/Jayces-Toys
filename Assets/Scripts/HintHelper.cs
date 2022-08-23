@@ -24,8 +24,8 @@ public class HintHelper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // check for player input
-        if (Touchscreen.current.primaryTouch.press.isPressed)
+        // check for player input OR level completed
+        if (Touchscreen.current.primaryTouch.press.isPressed || game.IsLevelComplete() == true)
         {
             // if player input, reset seconds
             secondsTillHint = hintSeconds;

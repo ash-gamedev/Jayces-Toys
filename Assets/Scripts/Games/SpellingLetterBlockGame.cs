@@ -30,7 +30,7 @@ public class SpellingLetterBlockGame : Game
         random = new System.Random();
         dragController = FindObjectOfType<DragController>();
 
-        words = WordSoundsDatabase.Sounds.Where(x => x.name.Count() <= 6).ToList();
+        words = SoundsDatabase.WordSounds.Where(x => x.name.Count() <= 6).ToList();
 
         OnPrepareLevel();
     }

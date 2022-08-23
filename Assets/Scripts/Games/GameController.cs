@@ -10,9 +10,12 @@ public class GameController : MonoBehaviour
     // the current game
     Game game;
 
+    System.Random random;
+
     // Use this for initialization
     void Start()
     {
+        random = new System.Random();
         game = FindObjectOfType<Game>();
         game.OnPrepareGame();
     }
@@ -57,7 +60,10 @@ public class GameController : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        AudioManager.instance?.PlaySoundEffect(EnumSoundName.YaySound);
+        // get random congrats sound
+        int index = random.Next(SoundsDatabase.CongratsSounds.Length);
+        AudioClip audioClip = SoundsDatabase.CongratsSounds[index];
+        AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position, 1f);
 
         yield return new WaitForSeconds(2f);
 
