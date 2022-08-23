@@ -135,6 +135,21 @@ public class Shape : MonoBehaviour
         else
             return false;
     }
+
+    // 
+    public Tuple<Transform, Transform> GetPairOfPointsWithoutNeighbours()
+    {
+        List<Transform> pointsWithoutNeighbours = TransformPoints.Where(x => !IsPointFullyConnected(x)).ToList(); //.FirstOrDefault();
+
+        if(pointsWithoutNeighbours?.Count > 0)
+        {
+            Transform point1 = pointsWithoutNeighbours.FirstOrDefault();
+            Transform point2 = pointsWithoutNeighbours.Where(x => AreNeighbours(point1, x)).FirstOrDefault();
+            return new Tuple<Transform, Transform>(point1, point2);
+        }
+
+        return null;
+    }
     #endregion
 
     #region private functions

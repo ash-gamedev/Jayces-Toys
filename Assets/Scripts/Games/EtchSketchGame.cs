@@ -20,6 +20,7 @@ public class EtchSketchGame : Game
     private Shape currentShape;
     private List<Transform> currentShapeDottedLinePoints;
     System.Random random;
+    HintHelper hintHelper;
 
     // fields for drawing lines 
     private Vector3 worldPosition;
@@ -35,6 +36,7 @@ public class EtchSketchGame : Game
 
         random = new System.Random();
         currentShapeDottedLinePoints = new List<Transform>();
+        hintHelper = FindObjectOfType<HintHelper>();
 
         OnPrepareLevel();
     }
@@ -92,6 +94,17 @@ public class EtchSketchGame : Game
     {
         // count how many lines have been drawn
         return currentShape.LinesDrawn.Count() == currentShape?.Points.Count;
+    }
+
+    public override void OnShowHint()
+    {
+        base.OnShowHint();
+
+        Tuple<Transform, Transform> points = currentShape.GetPairOfPointsWithoutNeighbours();
+        if (points != null)
+        {
+            hintHelper.ClickAndDrag(points.Item1.position, points.Item2.position);
+        }
     }
     #endregion
 

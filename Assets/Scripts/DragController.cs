@@ -24,6 +24,10 @@ public class DragController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        hintHelper = FindObjectOfType<HintHelper>();
+    }
 
     public void OnUpdate()
     {
@@ -102,8 +106,6 @@ public class DragController : MonoBehaviour
 
     public void Hint()
     {
-        hintHelper = FindObjectOfType<HintHelper>();
-
         Draggable[] draggables = FindObjectsOfType<Draggable>();
         if (draggables.Count() > 0)
         {
