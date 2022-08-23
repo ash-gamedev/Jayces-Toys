@@ -39,6 +39,11 @@ public class Game : MonoBehaviour, IGame
         StartCoroutine(WaitAndPrepareNextLevel());
     }
 
+    public virtual void OnShowHint()
+    {
+
+    }
+
     public virtual IEnumerator WaitAndPrepareNextLevel()
     {
         yield return new WaitForSeconds(1.5f);

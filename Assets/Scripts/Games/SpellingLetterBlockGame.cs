@@ -69,6 +69,12 @@ public class SpellingLetterBlockGame : Game
         else
             OnPrepareLevel();
     }
+
+    public override void OnShowHint()
+    {
+        base.OnShowHint();
+        dragController.Hint();
+    }
     #endregion
 
     #region Game functions

@@ -45,6 +45,12 @@ public class PotatoeHeadGame : Game
     {
         return dragController?.AllTargetsReached() == true;
     }
+
+    public override void OnShowHint()
+    {
+        base.OnShowHint();
+        dragController.Hint();
+    }
     #endregion
 
     #region Game Helper Functions

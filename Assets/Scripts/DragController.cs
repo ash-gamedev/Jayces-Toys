@@ -7,13 +7,13 @@ using UnityEngine.InputSystem;
 
 public class DragController : MonoBehaviour
 {
+    HintHelper hintHelper;
     public Draggable LastDragged => lastDragged;
 
     private bool isDragActive = false;
     private Vector3 worldPosition;
     private Draggable lastDragged;
 
-    private List<Draggable> draggables;
     private void Awake()
     {
         // only want one instance of controller
@@ -23,6 +23,7 @@ public class DragController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 
     public void OnUpdate()
     {
@@ -99,6 +100,19 @@ public class DragController : MonoBehaviour
         UpdateDragStatus(false);
     }
 
+    public void Hint()
+    {
+        hintHelper = FindObjectOfType<HintHelper>();
+
+        Draggable[] draggables = FindObjectsOfType<Draggable>();
+        if (draggables.Count() > 0)
+        {
+            Draggable draggable = draggables.FirstOrDefault(x => x.TargetReached == false);
+            if (draggable != null)
+                hintHelper.ClickAndDrag(draggable.transform.position, draggable.DragTarget.transform.position);
+        }
+    }
+
     void UpdateDragStatus(bool isDragging)
     {
         isDragActive = lastDragged.isDragging = isDragging;
@@ -112,7 +126,7 @@ public class DragController : MonoBehaviour
         {
             if (!isDragging)
                 yield return new WaitUntil(() => dragged?.IsMoving == false || dragged == null);
-            
+
 
             dragged.SpriteRenderer.sortingOrder = isDragging ? Layer.Dragging : Layer.Default;
             MeshRenderer meshRenderer = dragged.GetComponentInChildren<MeshRenderer>();

@@ -47,3 +47,6 @@ TagManager:
   - name: Line
     uniqueID: 3846898841
     locked: 0
+  - name: Hint
+    uniqueID: 1797096011
+    locked: 0
