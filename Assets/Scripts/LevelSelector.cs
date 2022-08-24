@@ -75,6 +75,9 @@ public class LevelSelector : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        // stop all sound effects (if any)
+        AudioManager.instance?.StopAllSoundEffects();
+
         SceneManager.LoadScene(sceneName);
     }
 }

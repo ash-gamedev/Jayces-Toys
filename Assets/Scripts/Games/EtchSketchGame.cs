@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,9 +25,9 @@ public class EtchSketchGame : Game
 
     // fields for drawing lines 
     private Vector3 worldPosition;
-    bool isDragActive = false;
+    public bool isDragActive = false;
     Point startPoint;
-    Point draggingPoint;
+    Transform draggingPoint;
     int lineIndex = 0;
 
     #region Game states
@@ -79,10 +80,11 @@ public class EtchSketchGame : Game
                 if (hit.collider != null)
                 {
                     Point draggable = hit.transform.gameObject.GetComponent<Point>();
-                    if (draggable != null && currentShape?.IsPointFullyConnected(draggable.transform) == false)
+                    if (draggable != null && currentShape?.IsPointFullyConnected(draggable.transform) == false && draggable.gameObject.CompareTag("Point"))
                     {
                         startPoint = draggable;
-                        draggingPoint = Instantiate(pointPrefab, currentShape.transform).GetComponent<Point>();
+                        draggingPoint = Instantiate(pointPrefab, currentShape.transform).transform;
+                        draggingPoint.GetComponent<Point>().startPosition = startPoint.transform;
                         InitDrag();
                     }
                 }
@@ -93,7 +95,7 @@ public class EtchSketchGame : Game
     public override bool IsLevelComplete()
     {
         // count how many lines have been drawn
-        return currentShape.LinesDrawn.Count() == currentShape?.Points.Count;
+        return currentShape.GetPairOfPointsWithoutNeighbours() == null && currentShape.LinesDrawn.Count() == currentShape?.Points.Count;
     }
 
     public override void OnShowHint()
@@ -117,42 +119,53 @@ public class EtchSketchGame : Game
 
     void Drag()
     {
-        draggingPoint.transform.position = new Vector3(worldPosition.x, worldPosition.y, draggingPoint.transform.position.z);
-        line.SetUpLine(new List<Transform>(){ startPoint.transform, draggingPoint.transform });
+        draggingPoint.position = new Vector3(worldPosition.x, worldPosition.y, draggingPoint.position.z);
+        line.SetUpLine(new List<Transform>(){ startPoint.transform, draggingPoint });
     }
 
-    void Drop()
+    public void Drop()
     {
-        // Get closes point
-        Transform closestPoint = currentShape.TransformPoints.Where(x => Mathf.Abs(Vector3.Distance(x.position, draggingPoint.transform.position)) < 1.5).FirstOrDefault();
+        // remove line
+        line.RemoveLine();
 
-        if(closestPoint != null && currentShape.AreNeighbours(closestPoint, startPoint.transform) && !currentShape.IsLine(closestPoint, startPoint.transform))
+        // destroy current drag
+        if (draggingPoint != null)
+            Destroy(draggingPoint.gameObject);
+
+        // sound effect
+        AudioManager.instance.PlaySoundEffect(EnumSoundName.DraggableSwish);
+
+        UpdateDragStatus(false);
+    }
+
+    public bool CanConnectToPoint(Transform closestPoint)
+    {
+        return closestPoint != null && currentShape.AreNeighbours(closestPoint, startPoint.transform) && !currentShape.IsLine(closestPoint, startPoint.transform) && closestPoint.transform.position != startPoint.transform.position;
+    }
+
+    public void ConnectToPoint(Transform closestPoint)
+    {
+        if (CanConnectToPoint(closestPoint))
         {
-            // sound effect
-            AudioManager.instance.PlaySoundEffect(EnumSoundName.DraggableDrop);
-
             // snap to point
             draggingPoint.transform.position = closestPoint.transform.position;
 
             // add line
-            Tuple<Vector3, Vector3> line = new Tuple<Vector3, Vector3>(startPoint.transform.position, closestPoint.position);
-            currentShape.LinesDrawn.Add(line);
+            Tuple<Vector3, Vector3> newLine = new Tuple<Vector3, Vector3>(startPoint.transform.position, closestPoint.position);
+            currentShape.LinesDrawn.Add(newLine);
+
+            line.SetUpLine(new List<Transform>() { startPoint.transform, closestPoint });
 
             lineIndex++;
-        }
-        else
-        {
-            // sound effect
-            AudioManager.instance.PlaySoundEffect(EnumSoundName.DraggableSwish);
-
-            // remove line
-            line.RemoveLine();
 
             // destroy current drag
             Destroy(draggingPoint.gameObject);
+
+            UpdateDragStatus(false);
+
+            // sound effect
+            AudioManager.instance.PlaySoundEffect(EnumSoundName.DraggableDrop);
         }
-        
-        UpdateDragStatus(false);
     }
 
     void UpdateDragStatus(bool isDragging)
@@ -199,7 +212,7 @@ public class EtchSketchGame : Game
         foreach (var point in currentShape.TransformPoints)
         {
             yield return new WaitForSeconds(0.35f);
-            point.transform.DOScale(1f, 1f).SetEase(Ease.OutBounce);
+            point.transform.DOScale(1.4f, 1f).SetEase(Ease.OutBounce);
             AudioManager.instance?.PlaySoundEffect(EnumSoundName.PopSound);
         }
 
