@@ -1075,6 +1075,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 817644845}
     m_Modifications:
+    - target: {fileID: 1708801117765889338, guid: 83184d39a54ec60489f64749b5f13012, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 700250508, guid: 5d6c9e5f129fe254591c2e5f65d9d500, type: 3}
     - target: {fileID: 9158411811645204212, guid: 83184d39a54ec60489f64749b5f13012, type: 3}
       propertyPath: m_Name
       value: Shoes
@@ -1660,6 +1664,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 817644845}
     m_Modifications:
+    - target: {fileID: 719998224705485546, guid: 7228f96d874569d47b78c71bfd9038b0, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 122136443, guid: 5d6c9e5f129fe254591c2e5f65d9d500, type: 3}
     - target: {fileID: 3055545544868140096, guid: 7228f96d874569d47b78c71bfd9038b0, type: 3}
       propertyPath: dragTarget
       value: 

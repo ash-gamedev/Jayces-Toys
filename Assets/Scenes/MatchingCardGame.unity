@@ -1026,18 +1026,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelsCompleted: 0
   cardSprites:
-  - {fileID: -710488570, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
-  - {fileID: -722503783, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
-  - {fileID: -73397450, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
-  - {fileID: -664108114, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
-  - {fileID: -12110608, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
-  - {fileID: -227686468, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
-  - {fileID: -1671900574, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
-  - {fileID: 1143742945, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
-  - {fileID: 1609563645, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
-  - {fileID: 792050408, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
-  - {fileID: -1701573891, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
-  - {fileID: -273259843, guid: 2fbc6d5c74451604db7227ebc9b80bc6, type: 3}
+  - {fileID: -830166350, guid: 6ff572b1194305847912e3af993c97b2, type: 3}
+  - {fileID: -1363814013, guid: 6ff572b1194305847912e3af993c97b2, type: 3}
+  - {fileID: 107994891, guid: 6ff572b1194305847912e3af993c97b2, type: 3}
+  - {fileID: 85361172, guid: 6ff572b1194305847912e3af993c97b2, type: 3}
+  - {fileID: -1689973026, guid: 6ff572b1194305847912e3af993c97b2, type: 3}
+  - {fileID: -1677682268, guid: 6ff572b1194305847912e3af993c97b2, type: 3}
+  - {fileID: -391278934, guid: 6ff572b1194305847912e3af993c97b2, type: 3}
+  - {fileID: -2108136608, guid: 6ff572b1194305847912e3af993c97b2, type: 3}
+  - {fileID: 848578573, guid: 6ff572b1194305847912e3af993c97b2, type: 3}
+  - {fileID: -760468072, guid: 6ff572b1194305847912e3af993c97b2, type: 3}
+  - {fileID: 1346358098, guid: 6ff572b1194305847912e3af993c97b2, type: 3}
   cardPrefab: {fileID: 306045566525717972, guid: 488fb46fcda824b4d939d0ce54820b76, type: 3}
   cardParentTransform: {fileID: 860871807}
   SelectedCards: []
